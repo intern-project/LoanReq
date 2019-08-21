@@ -12,6 +12,8 @@ import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/
 import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RequestComponent } from './components/admin/request/request.component';
+import { MakeRequestComponent } from './components/officer/make-request/make-request.component';
+
 
 
 
@@ -23,6 +25,7 @@ import { RequestComponent } from './components/admin/request/request.component';
     PendingRequestsComponent,
     ReviewedRequestsComponent,
     RequestComponent,
+    MakeRequestComponent,
 
   ],
   imports: [

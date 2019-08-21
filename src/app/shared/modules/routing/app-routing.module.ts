@@ -4,6 +4,7 @@ import { LoginComponent } from 'src/app/components/auth/login/login.component';
 import { PendingRequestsComponent } from 'src/app/components/admin/pending-requests/pending-requests.component';
 import { ReviewedRequestsComponent } from 'src/app/components/admin/reviewed-requests/reviewed-requests.component';
 import { RequestComponent } from 'src/app/components/admin/request/request.component';
+import {MakeRequestComponent} from 'src/app/components/officer/make-request/make-request.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'reviewed', component: ReviewedRequestsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'request/:id', component: RequestComponent },
+  { path: 'makeReq', component: MakeRequestComponent },
 ];
 
 @NgModule({
