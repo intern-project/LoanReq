@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pending-requests.component.css']
 })
 export class PendingRequestsComponent implements OnInit {
+  
+  requests: Request[];
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
