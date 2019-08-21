@@ -11,6 +11,8 @@ import { CalculationComponent } from './components/officer/calculation/calculati
 import { PendingRequestsComponent } from './components/admin/pending-requests/pending-requests.component';
 import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
 import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     PrimeNgModule,
+    AngularFontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
