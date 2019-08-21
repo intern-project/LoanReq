@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     console.log('login works');
     console.log(this.form.value.email);
     if(this.form.invalid){
-      return
+      return x
     }
 
     else{
