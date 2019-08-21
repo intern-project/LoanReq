@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { AppRoutingModule } from './shared/routing/app-routing.module';
+import { AppRoutingModule } from './shared/modules/routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { CalculationComponent } from './components/officer/calculation/calculation.component';
 import { PendingRequestsComponent } from './components/admin/pending-requests/pending-requests.component';
@@ -18,7 +17,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     LoginComponent,
     CalculationComponent,
     PendingRequestsComponent,

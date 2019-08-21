@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {SlideMenuModule} from 'primeng/slidemenu';
-
+import {TableModule} from 'primeng/table';
 import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 
@@ -10,6 +10,7 @@ import {ButtonModule} from 'primeng/button';
   exports: [
     SlideMenuModule,
     CardModule,
+    TableModule,
     ButtonModule
   ],
 })

@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api';                 //api
+import { Component } from '@angular/core';         //api
 
 @Component({
   selector: 'app-root',
