@@ -12,6 +12,7 @@ import { PendingRequestsComponent } from './components/admin/pending-requests/pe
 import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
 import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
 
 
@@ -22,15 +23,18 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     LoginComponent,
     CalculationComponent,
     PendingRequestsComponent,
-    ReviewedRequestsComponent,
-
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReviewedRequestsComponent,
+    ReactiveFormsModule,
     AppRoutingModule,
     PrimeNgModule,
     AngularFontAwesomeModule,
+    FormControl,
+    Validators
+
   ],
   providers: [],
   bootstrap: [AppComponent]
