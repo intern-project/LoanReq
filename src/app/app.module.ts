@@ -10,8 +10,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { CalculationComponent } from './components/officer/calculation/calculation.component';
 import { PendingRequestsComponent } from './components/admin/pending-requests/pending-requests.component';
 import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
-import {SlideMenuModule} from 'primeng/slidemenu';
-import {MenuItem} from 'primeng/api';
+import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 
 
 @NgModule({
@@ -28,9 +27,9 @@ import {MenuItem} from 'primeng/api';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SlideMenuModule
+    PrimeNgModule,
   ],
   providers: [],
-  bootstrap: [AppComponent,]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
