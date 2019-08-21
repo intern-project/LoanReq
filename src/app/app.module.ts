@@ -9,8 +9,10 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { LoginComponent } from './components/auth/login/login.component';
 import { CalculationComponent } from './components/officer/calculation/calculation.component';
 import { PendingRequestsComponent } from './components/admin/pending-requests/pending-requests.component';
-import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
 import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+
 
 
 @NgModule({
@@ -20,14 +22,17 @@ import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
     LoginComponent,
     CalculationComponent,
     PendingRequestsComponent,
-    ReviewedRequestsComponent,
 
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     PrimeNgModule,
+    AngularFontAwesomeModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
