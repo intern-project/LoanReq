@@ -3,6 +3,8 @@ import {MenuItem} from 'primeng/api';
 import { PrimeNgModule } from '../../../shared/modules/prime-ng/prime-ng.module';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Message} from 'primeng/components/common/api';
+import {CardModule} from 'primeng/card';
+
 
 @Component({
   selector: 'app-login',
