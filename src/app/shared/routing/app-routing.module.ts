@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from 'src/app/components/auth/login/login.component';
-import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard.component';
+import { PendingRequestsComponent } from 'src/app/components/admin/pending-requests/pending-requests.component';
+import { ReviewedRequestsComponent } from 'src/app/components/admin/reviewed-requests/reviewed-requests.component';
+import { MakeRequestComponent } from 'src/app/components/officer/make-request/make-request.component';
 
 
 const routes: Routes = [
@@ -9,7 +11,10 @@ const routes: Routes = [
     redirectTo: '/',
     pathMatch: 'full'
   },
-  { path: 'admin-dashboard', component: DashboardComponent },
+  { path: 'admin/pending', component: PendingRequestsComponent },
+  { path: 'admin/reviewed', component: ReviewedRequestsComponent },
+  { path: 'officer/addrequest', component: MakeRequestComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: LoginComponent }
 ];
 
