@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import {SlideMenuModule} from 'primeng/slidemenu';
-import {MenuItem} from 'primeng/api';
+
+import {CardModule} from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
 
 
 
 @NgModule({
   exports: [
-    SlideMenuModule
+    SlideMenuModule,
+    CardModule,
+    ButtonModule
   ],
 })
 export class PrimeNgModule { }
