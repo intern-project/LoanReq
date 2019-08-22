@@ -11,4 +11,9 @@ export class RequestService {
   getAllRequests() {
     
   }
+
+  add({severity: string, summary: sum, detail: any}){
+
+
+  }
 }
