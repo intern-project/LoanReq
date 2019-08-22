@@ -15,9 +15,10 @@
             <span *ngIf="termValue" class="termValue">
                 <br>
                 <div class="term" (click)="termClick()"><b>Term Value :</b>  {{term | currency:'LKR ' : 'symbol'}} <i class="pi pi-pencil" style="font-size: 20px" (click)="termClick()"></i></div>
+                <br>
             </span>
             <div *ngIf="tableLoading" class="table">
-                <p-table [value]="termValueTabel" dataKey="title" editMode="row">
+                <p-table [value]="termValueTabel" dataKey="title" editMode="row" [responsive]='true' [rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'>
                     <ng-template pTemplate="header">
                         <tr>
                             <th>Term No.</th>
@@ -33,7 +34,7 @@
                             <td style="text-align: center">
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText type="text" [(ngModel)]="rowData.value" required>
+                                        <input pInputText  [(ngModel)]="rowData.value" required>
                                     </ng-template>
                                     <ng-template pTemplate="output">
                                         {{rowData.value | currency:'LKR ' : 'symbol'}}
@@ -49,6 +50,5 @@
                     </ng-template>
                 </p-table>
             </div>
-
     </p-card>
 </div>

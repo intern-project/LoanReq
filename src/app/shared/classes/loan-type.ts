@@ -1,5 +1,5 @@
 export interface LoanType {
   id: string;
-  type: string;
-  rate: number;
+  label: string;
+  value: number;
 }
