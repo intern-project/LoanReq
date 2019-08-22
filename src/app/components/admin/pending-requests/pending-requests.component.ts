@@ -29,7 +29,7 @@ export class PendingRequestsComponent implements OnInit {
   }
 
   handleClick(id) {
-    this.router.navigate(['/request', id]);
+    this.router.navigate(['/admin/request', id]);
     localStorage.setItem('RID', id);
   }
 

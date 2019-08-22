@@ -5,14 +5,18 @@ import { PendingRequestsComponent } from 'src/app/components/admin/pending-reque
 import { ReviewedRequestsComponent } from 'src/app/components/admin/reviewed-requests/reviewed-requests.component';
 import { RequestComponent } from 'src/app/components/admin/request/request.component';
 import {MakeRequestComponent} from 'src/app/components/officer/make-request/make-request.component';
+import { LoanTypeComponent } from 'src/app/components/admin/loan-type/loan-type.component';
 
 
 const routes: Routes = [
-  { path: 'pending', component: PendingRequestsComponent },
-  { path: 'reviewed', component: ReviewedRequestsComponent },
+  { path: 'admin/pending', component: PendingRequestsComponent },
+  { path: 'admin/reviewed', component: ReviewedRequestsComponent },
+  { path: 'admin/loan-type', component: LoanTypeComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'request/:id', component: RequestComponent },
+  { path: 'admin/request/:id', component: RequestComponent },
   { path: 'makeReq', component: MakeRequestComponent },
+  { path: '**', component: LoginComponent }
+
 ];
 
 @NgModule({
