@@ -1,9 +1,3 @@
-export interface State {
-    accepted?: boolean;
-    declined?: boolean;
-    pending?: boolean;
- }
-
 export interface Request {
     rid: string;
     name: string;
@@ -12,7 +6,11 @@ export interface Request {
     age: string;
     address: string;
     doc: string;
-    reson: string;
-    status: State;
+    reason: string;
     contact: string;
+    duration: string;
+    amount: string;
+    accepted?: boolean;
+    declined?: boolean;
+    pending?: boolean;
  }

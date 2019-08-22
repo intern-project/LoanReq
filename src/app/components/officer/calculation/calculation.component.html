@@ -1,1 +1,54 @@
-<p>calculation works!</p>
+<div class="calculation">
+    <p-card>
+        <form [formGroup]="calculationForm">
+                <span class="ui-float-label">
+                    <input  type="text" pInputText formControlName="amount" class="formInput" style="width: 75%">
+                    <label for="float-input">Amount</label>
+                </span>
+                <span class="ui-float-label">
+                    <p-dropdown [options]="years" [style] = "{'width' : '75%'}" formControlName="duration" placeholder="Select Duration"></p-dropdown>
+                </span>
+                <span class="ui-float-label">
+                    <p-dropdown [options]="types" [style] = "{'width' : '75%'}" formControlName="type" (onChange)="calculateTerm()" placeholder="Select Loan Type"></p-dropdown>
+                </span>
+            </form>
+            <span *ngIf="termValue" class="termValue">
+                <br>
+                <div class="term" (click)="termClick()"><b>Term Value :</b>  {{term | currency:'LKR ' : 'symbol'}} <i class="pi pi-pencil" style="font-size: 20px" (click)="termClick()"></i></div>
+            </span>
+            <div *ngIf="tableLoading" class="table">
+                <p-table [value]="termValueTabel" dataKey="title" editMode="row">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Term No.</th>
+                            <th>Term Value</th>
+                            <th style="width:8em"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+                        <tr [pEditableRow]="rowData" >
+                            <td style="text-align: center">
+                                {{rowData.label}} Term
+                            </td>
+                            <td style="text-align: center">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <input pInputText type="text" [(ngModel)]="rowData.value" required>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{rowData.value | currency:'LKR ' : 'symbol'}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td style="text-align:center">
+                                <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+                                <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                                <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+    </p-card>
+</div>
