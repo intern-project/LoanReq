@@ -6,6 +6,7 @@ import { ReviewedRequestsComponent } from 'src/app/components/admin/reviewed-req
 import { RequestComponent } from 'src/app/components/admin/request/request.component';
 import {MakeRequestComponent} from 'src/app/components/officer/make-request/make-request.component';
 import { LoanTypeComponent } from 'src/app/components/admin/loan-type/loan-type.component';
+import { AuthGuard } from '../../services/login/auth.guard';
 
 
 const routes: Routes = [
@@ -14,13 +15,14 @@ const routes: Routes = [
   { path: 'admin/loan-type', component: LoanTypeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'admin/request/:id', component: RequestComponent },
-  { path: 'makeReq', component: MakeRequestComponent },
+  { path: 'makeReq', component: MakeRequestComponent }, //canActivate: [AuthGuard] Add the Guards
   { path: '**', component: LoginComponent }
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers : [AuthGuard]
 })
 export class AppRoutingModule { }
