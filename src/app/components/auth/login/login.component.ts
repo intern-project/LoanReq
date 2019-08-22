@@ -13,7 +13,7 @@ import {CardModule} from 'primeng/card';
 })
 export class LoginComponent implements OnInit {
 
-  public form: FormGroup;
+  form: FormGroup;
 
   constructor() { }
 

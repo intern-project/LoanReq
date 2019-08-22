@@ -12,6 +12,8 @@ import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
+import { AuthInterceptor } from './shared/services/login/auth-interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -35,7 +37,7 @@ import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/
 
 
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
