@@ -1,0 +1,32 @@
+<h1 style="text-align:center">Loan Request Details</h1>
+<div style="margin-left:200px; margin-right: 200px; margin-top: 100px;">
+  <p-card *ngFor="let request of requests">
+    <div style="text-align:center">
+      <div *ngIf="request.rid == reqid">
+        <h3>Name: {{request.name}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <h3>NIC: {{request.nic}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <h3>Address: {{request.address}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <h3>Contact: {{request.contact}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <h3>Age: {{request.age}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <h3>Occupation: {{request.job}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <h3>Support Documents: {{request.doc}}</h3>
+      </div>
+      <div *ngIf="request.rid == reqid">
+        <button (onClick)="clickAccept()" style="padding:3px; margin: 10px; font-size: 15px" pButton type="button" class="ui-button-success"  ><b>Accept</b></button>
+        <button style="padding:3px; font-size: 15px" pButton type="button" class="ui-button-danger" (onClick)="clickDecline()"><b>Decline</b></button>
+      </div>
+    </div>
+  </p-card>
+</div>
