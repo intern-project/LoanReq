@@ -28,12 +28,12 @@ export class RequestComponent implements OnInit {
 
   clickAccept(){
     //update request on status
-    this.router.navigate(['/pending']);
+    this.router.navigate(['/admin/pending']);
   }
 
   clickDecline(){
     //update request on status
-    this.router.navigate(['/pending']);
+    this.router.navigate(['/admin/pending']);
   }
 
   ngOnInit() {

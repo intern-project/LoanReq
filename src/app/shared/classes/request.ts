@@ -3,8 +3,8 @@ export interface State {
     declined?: boolean;
     pending?: boolean;
  }
- 
- export interface Request {
+
+export interface Request {
     rid: string;
     name: string;
     nic: string;
@@ -14,4 +14,5 @@ export interface State {
     doc: string;
     reson: string;
     status: State;
- } 
+    contact: string;
+ }

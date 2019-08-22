@@ -1,0 +1,48 @@
+.loanType {
+  margin-left: 35%;
+  margin-top: 3%;
+  width: 50%;
+}
+.container {
+  margin-left: 18%;
+}
+.table {
+  margin-top: 8%;
+}
+p-header {
+  font-size: 18px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+p-card {
+  margin-left: 40%
+}
+
+.ui-float-label{
+  margin-top: 3%;
+  margin-bottom: 5%;
+  font-size: 16px;
+
+}
+.formInput {
+  font-size: 18px;
+  width: 70%;
+  height: 35px;
+  border-radius: 20px
+}
+input {
+  
+}
+label {
+  margin-left: 10px
+}
+
+.ui-button-rounded {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.btn {
+  margin-left: 25%
+}

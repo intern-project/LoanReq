@@ -13,6 +13,9 @@ import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RequestComponent } from './components/admin/request/request.component';
 import { MakeRequestComponent } from './components/officer/make-request/make-request.component';
+import { LoanTypeComponent } from './components/admin/loan-type/loan-type.component';
+import { SideBarComponent } from './common/side-bar/side-bar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -26,6 +29,8 @@ import { MakeRequestComponent } from './components/officer/make-request/make-req
     ReviewedRequestsComponent,
     RequestComponent,
     MakeRequestComponent,
+    LoanTypeComponent,
+    SideBarComponent
 
   ],
   imports: [
@@ -34,7 +39,9 @@ import { MakeRequestComponent } from './components/officer/make-request/make-req
     AppRoutingModule,
     PrimeNgModule,
     AngularFontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
