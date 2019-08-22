@@ -19,6 +19,7 @@ import { MakeRequestComponent } from './components/officer/make-request/make-req
 import { LoanTypeComponent } from './components/admin/loan-type/loan-type.component';
 import { SideBarComponent } from './common/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 
@@ -44,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     PrimeNgModule,
     AngularFontAwesomeModule,
+    FileUploadModule,
 
 
     HttpClientModule,
