@@ -10,12 +10,9 @@
       "doc": "adcsdvsdv",
       "contact" : "0775689249",
       "reson": "",
-      "status": {
-        "accepted": false,
-        "declined": false,
-        "pending": true
-        }
-
+      "accepted": false,
+      "declined": false,
+      "pending": true
     }, 
     {
       "rid": "2",
@@ -27,11 +24,9 @@
       "doc": "adcsdvsdv",
       "contact" : "0775689249",
       "reson": "",
-      "status": {
-        "accepted": false,
-        "declined": false,
-        "pending": true
-        }
+      "accepted": false,
+      "declined": false,
+      "pending": true
 
     }
   ]
