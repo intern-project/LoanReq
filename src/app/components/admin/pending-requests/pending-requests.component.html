@@ -8,9 +8,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-req>
         <tr>
-            <td *ngIf="req.status.pending == true">{{req.nic}}</td>
-            <td *ngIf="req.status.pending == true">{{req.name}}</td>
-            <td *ngIf="req.status.pending == true">
+            <td *ngIf="req.pending == true">{{req.nic}}</td>
+            <td *ngIf="req.pending == true">{{req.name}}</td>
+            <td *ngIf="req.pending == true">
                 <p-button label="Click" (onClick)="handleClick(req.rid)"></p-button>
             </td>
         </tr>
