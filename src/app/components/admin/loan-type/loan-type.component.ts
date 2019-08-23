@@ -20,8 +20,8 @@ export class LoanTypeComponent implements OnInit {
     public fb: FormBuilder
   ) {
     this.loanTypes = [
-      {id: '', type: 'Golder Loan', rate: 12},
-      {id: '', type: 'Vehicle Loan', rate: 10},
+      {id: '', label: 'Golder Loan', value: 12},
+      {id: '', label: 'Vehicle Loan', value: 10},
     ];
   }
 
@@ -32,8 +32,8 @@ export class LoanTypeComponent implements OnInit {
   initForm() {
     this.loanTypeForm = this.fb.group({
       id: [''],
-      type: ['', Validators.required],
-      rate: ['', Validators.required]
+      label: ['', Validators.required],
+      value: ['', Validators.required]
     });
   }
 
@@ -47,12 +47,12 @@ export class LoanTypeComponent implements OnInit {
   onCancel() {}
 
   onRowEditInit(lType: LoanType) {
-    this.cloned[lType.type] = {...lType};
+    this.cloned[lType.label] = {...lType};
 }
 
 onRowEditSave(lType: LoanType) {
-  if (lType.rate > 0) {
-      delete this.cloned[lType.rate];
+  if (lType.value > 0) {
+      delete this.cloned[lType.value];
       // this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
   } else {
       // this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
@@ -61,7 +61,7 @@ onRowEditSave(lType: LoanType) {
 
 onRowEditCancel(lType: LoanType, index: number) {
   // this.loanType[index] = this.cloned[lType.rate];
-  delete this.cloned[lType.rate];
+  delete this.cloned[lType.value];
 }
 
 }
