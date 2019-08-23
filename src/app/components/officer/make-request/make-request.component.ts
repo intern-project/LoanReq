@@ -31,12 +31,57 @@ export class MakeRequestComponent implements OnInit {
     public fb: FormBuilder,
     private messageService: RequestService
   ) {
-   
+
   }
 
   ngOnInit() {
-    
+    this.initForm();
   }
+
+  initForm() {
+    this.loanTypeForm = this.fb.group({
+      id: [''],
+      type: ['', Validators.required],
+      rate: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    console.log(this.loanTypeForm.value);
+    const data = this.loanTypeForm.value;
+    this.loanTypes.push(data);
+
+    this.initForm();
+  }
+  onCancel() { }
+
+  onRowEditInit(lType: LoanType) {
+    this.cloned[lType.type] = { ...lType };
+  }
+
+  onRowEditSave(lType: LoanType) {
+    if (lType.rate > 0) {
+      delete this.cloned[lType.rate];
+      // this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
+    } else {
+      // this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
+    }
+  }
+
+  onRowEditCancel(lType: LoanType, index: number) {
+    // this.loanType[index] = this.cloned[lType.rate];
+    delete this.cloned[lType.rate];
+  }
+
+    onUpload(event) {
+        for(let file of event.files) {
+            this.uploadedFiles.push(file);
+        }
+
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+    }
+}
+
 
   initForm() {
     this.loanTypeForm = this.fb.group({
@@ -57,4 +102,3 @@ export class MakeRequestComponent implements OnInit {
 
  
 }
-
