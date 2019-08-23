@@ -8,14 +8,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { CalculationComponent } from './components/officer/calculation/calculation.component';
 import { PendingRequestsComponent } from './components/admin/pending-requests/pending-requests.component';
-import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
 import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
+import { AuthInterceptor } from './shared/services/login/auth-interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestComponent } from './components/admin/request/request.component';
 import { MakeRequestComponent } from './components/officer/make-request/make-request.component';
 import { LoanTypeComponent } from './components/admin/loan-type/loan-type.component';
 import { SideBarComponent } from './common/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 
@@ -32,18 +36,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoanTypeComponent,
     SideBarComponent
 
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     PrimeNgModule,
     AngularFontAwesomeModule,
+    FileUploadModule,
+
+
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

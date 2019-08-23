@@ -2,43 +2,45 @@
 
 
 <div class="container">
-  <div class="vertical-center">
+    <div class="vertical-center">
 
-<p-card header="Sign In" [style]="{width: '500px'}">
-<hr>
+    <p-card header="Sign In" [style]="{width: '500px'}">
+    <hr>
 
-<form>
-  <h3 class="first">User Name</h3>
-<div class="ui-g ui-fluid">
-    <div class="ui-g-12 ui-md-2">
-        <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-            <input type="text" pInputText placeholder="Username">
-        </div>
-    </div>
-</div>
-
-<h3 class="first">Password</h3>
-<div class="ui-g ui-fluid">
-    <div class="ui-g-12 ui-md-2">
-        <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
-            <input type="password" pInputText placeholder="Password" >
-        </div>
-    </div>
-</div>
-
-<br>
-    <div align="right">
-    <button pButton type="button" label="Login" class="ui-button-raised ui-button-secondary "></button>
+    <form [formGroup]="form" (submit)="onLogin()" >
+    <h3 class="first">User Name</h3>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-2">
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+              <input type="text" formControlName="email" placeholder="email">
+              <p severity="error" text="Email is required" *ngIf="!form.get('email').valid"></p>
+          </div>
+      </div>
     </div>
 
+    <h3 class="first">Password</h3>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+              <input type="password" formControlName="password" placeholder="password">
+              <p severity="error" text="Password is required" *ngIf="!form.get('password').valid"></p>
+          </div>
+      </div>
+    </div>
 
-</form >
+    <br>
+      <div align="right">
+      <button pButton type="submit" label="Login" class="ui-button-raised ui-button-secondary "></button>
+      </div>
 
-</p-card>
 
-</div>
-</div>
+    </form >
+
+    </p-card>
+
+    </div>
+    </div>
 
 

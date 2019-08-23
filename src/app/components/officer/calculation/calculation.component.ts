@@ -38,8 +38,8 @@ export class CalculationComponent implements OnInit {
       {label: 'Ten Years', value: 10},
     ];
     this.types = [
-      {id:'', label: 'Gold Loan', value: 10 },
-      {id:'', label: 'Vehice Loan' , value: 5},
+      {id: '', label: 'Gold Loan', value: 10 },
+      {id: '', label: 'Vehice Loan' , value: 5},
     ];
   }
 
@@ -73,8 +73,9 @@ export class CalculationComponent implements OnInit {
     // item.value = Number(item.value);
     const tobePaidMonth = (cal.months - item.label);
     const toBePaid = ((this.term * (tobePaidMonth)) - item.value);
-    const newTerm = toBePaid / (tobePaidMonth);
-    
+    let newTerm = toBePaid / (tobePaidMonth);
+    const val = newTerm.toFixed(2);
+    newTerm = Number(val);
 
     for ( let i = item.label; i <= cal.months; i++) {
       const data = {} as TermValue;
@@ -94,7 +95,9 @@ export class CalculationComponent implements OnInit {
     const interest = cal.type / 100 ;
 
     this.term = ((cal.amount + (cal.amount * interest)) / cal.months);
-    // this.term = Math.ceil(this.term);
+    const val = this.term.toFixed(2);
+    this.term = Number(val);
+    
     if (this.term) {
       this.termValue = true;
     }
