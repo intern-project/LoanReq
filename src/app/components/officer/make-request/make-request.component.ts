@@ -31,10 +31,7 @@ export class MakeRequestComponent implements OnInit {
     public fb: FormBuilder,
     private messageService: RequestService
   ) {
-    this.loanTypes = [
-      { id: '', type: 'Golder Loan', rate: 12 },
-      { id: '', type: 'Vehicle Loan', rate: 10 },
-    ];
+
   }
 
   ngOnInit() {
@@ -85,3 +82,23 @@ export class MakeRequestComponent implements OnInit {
     }
 }
 
+
+  initForm() {
+    this.loanTypeForm = this.fb.group({
+      id: [''],
+      type: ['', Validators.required],
+      rate: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    console.log(this.loanTypeForm.value);
+    const data = this.loanTypeForm.value;
+    this.loanTypes.push(data);
+
+    this.initForm();
+  }
+  onCancel() { }
+
+ 
+}

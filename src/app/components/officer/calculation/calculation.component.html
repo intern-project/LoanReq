@@ -18,7 +18,7 @@
                 <br>
             </span>
             <div *ngIf="tableLoading" class="table">
-                <p-table [value]="termValueTabel" dataKey="title" editMode="row" [responsive]='true' [rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'>
+                <p-table [value]="termValueTabel" dataKey="title" editMode="row" [responsive]='true' [rows]='6' [paginator]='true' [rowsPerPageOptions]='[12, 24, 36]'>
                     <ng-template pTemplate="header">
                         <tr>
                             <th>Term No.</th>
@@ -34,7 +34,7 @@
                             <td style="text-align: center">
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText  [(ngModel)]="rowData.value" required>
+                                        <input pInputText  [(ngModel)]="rowData.value" ng-model='rowData.value | number: 2' required>
                                     </ng-template>
                                     <ng-template pTemplate="output">
                                         {{rowData.value | currency:'LKR ' : 'symbol'}}
