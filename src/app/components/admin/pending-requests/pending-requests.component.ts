@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Request } from '../../../shared/classes/request';
 import { Router } from '@angular/router';
-
+import { RequestService } from '../../../shared/services/request/request.service';
 
 @Component({
   selector: 'app-pending-requests',
@@ -12,21 +12,14 @@ import { Router } from '@angular/router';
 })
 export class PendingRequestsComponent implements OnInit {
 
-  private _jsonURL = '../../../../assets/requests.json';
   requests: Request[];
 
   constructor(
     private http: HttpClient,
-    private router: Router) {
-    this.getJSON().subscribe(data => {
-      console.log(data.request);
-      this.requests = data.request;
-    });
-  }
+    private router: Router,
+    public requestService: RequestService
+    ) {}
 
-  public getJSON(): Observable<any> {
-    return this.http.get(this._jsonURL);
-  }
 
   handleClick(id) {
     this.router.navigate(['/admin/request', id]);
@@ -34,7 +27,9 @@ export class PendingRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.requestService.getJSON()
+    const req = localStorage.getItem('req');
+    this.requests = JSON.parse(req);
   }
 
 }
