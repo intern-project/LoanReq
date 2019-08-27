@@ -1,98 +1,85 @@
 <app-side-bar></app-side-bar>
-
-
-<div class="btn">
-    <button pButton type="button" label="Add Loan" class="ui-button-rounded" (click)="addLoan = true"
-        ></button>
+ <div class="btn">
+    <button pButton type="button" label="Add Loan" class="ui-button-rounded" (click)="addLoan = true"></button>
 </div>
-<div *ngIf = "addLoan">
-<div class="loanType">
-    <div class="col-md-12">
-        <p-card>
-            <p-header>
-                <b>Loan Request form</b>
-            </p-header>
-            <div class="container">
-                <form [formGroup]="reqMakeForm">
+<div *ngIf="addLoan">
+    <div class="loanType">
+        <div class="col-md-12">
+            <p-card>
+                <p-header>
+                    <b>Loan Request form</b>
+                </p-header>
+                <div class="container">
+                    <form [formGroup]="reqMakeForm">
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="10" pInputText formControlName="name"
-                            class="formInput">
-                        <label for="a-input">Full name</label>
-                        <!--  <p-message *ngIf="loanTypeForm.get('type').invalid" severity="error" text="Field is required"></p-message> -->
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="name">
+                            <label for="a-input">Full name</label>
+                        </span>
+                        <div class="row">
+                            <div class="col-ms-3">
+                            <span class="ui-float-label">
+                                <input id="float-input" type="text" size="40" pInputText formControlName="address">
+                                <label for="float-input">address</label>
+                            </span>
+                        </div>
+                        <div class="col-ms-3">
+                            <span class="ui-float-label">
+                                <input id="float-input" type="text" size="20" pInputText formControlName="age">
+                                <label for="a-input">Age</label>
+                            </span>
+                        </div>
+                        </div>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="10" pInputText formControlName="address"
-                            class="formInput">
-                        <label for="float-input">address</label>
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="job">
+                            <label for="float-input">profession</label>
+                        </span>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="30" pInputText formControlName="age"
-                            class="formInput">
-                        <label for="a-input">Age</label>
-                        <!--  <p-message *ngIf="loanTypeForm.get('type').invalid" severity="error" text="Field is required"></p-message> -->
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="contact">
+                            <label for="a-input">contact No</label>
+                        </span>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="30" pInputText formControlName="job"
-                            class="formInput">
-                        <label for="float-input">profession</label>
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="nic">
+                            <label for="float-input">NIC No</label>
+                        </span>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="30" pInputText formControlName="contact"
-                            class="formInput">
-                        <label for="a-input">contact No</label>
-                        <!--  <p-message *ngIf="loanTypeForm.get('type').invalid" severity="error" text="Field is required"></p-message> -->
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="ammount">
+                            <label for="a-input">Ammount</label>
+                        </span>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="30" pInputText formControlName="nic"
-                            class="formInput">
-                        <label for="float-input">NIC No</label>
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="duration">
+                            <label for="float-input">duraton</label>
+                        </span>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="10" pInputText formControlName="ammount"
-                            class="formInput">
-                        <label for="a-input">Ammount</label>
-                        <!--  <p-message *ngIf="loanTypeForm.get('type').invalid" severity="error" text="Field is required"></p-message> -->
-                    </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="reason">
+                            <label for="a-input">Reason</label>
+                        </span>
 
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="10" pInputText formControlName="duration"
-                            class="formInput">
-                        <label for="float-input">duraton</label>
-                    </span>
-
-                    <span class="ui-float-label">
-                        <input id="float-input" type="text" size="30" pInputText formControlName="reason"
-                            class="formInput">
-                        <label for="a-input">Reason</label>
-                        <!--  <p-message *ngIf="loanTypeForm.get('type').invalid" severity="error" text="Field is required"></p-message> -->
-                    </span>
-
-                </form>
-                <div class="btn">
-                    <button pButton type="button" label="submit" class="ui-button-rounded" (click)="onSubmit()"
-                        [disabled]="reqMakeForm.invalid"></button>
-                    <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
-                        (click)="onCancel()"></button>
+                    </form>
+                    <div class="btn">
+                        <button pButton type="button" label="submit" class="ui-button-rounded" (click)="onSubmit()"
+                            [disabled]="reqMakeForm.invalid"></button>
+                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
+                            (click)="onCancel()"></button>
+                    </div>
                 </div>
-            </div>
 
-            <p-footer></p-footer>
-        </p-card>
-        <p-card>
-            <p-header>
-                <b>document uploder</b>
-            </p-header>
-            <div class="container">
-                <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
-            </div>
-        </p-card>
+                <p-footer></p-footer>
+            </p-card>
+            <p-card>
+                <p-header>
+                    <b>document uploder</b>
+                </p-header>
+                <div class="container">
+                    <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+                </div>
+            </p-card>
+        </div>
     </div>
-</div>
 </div>

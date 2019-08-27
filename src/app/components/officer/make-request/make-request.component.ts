@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import {StepsModule} from 'primeng/steps';
+import {MenuItem} from 'primeng/api';
 
 
 @Component({
@@ -20,11 +22,11 @@ import { Observable } from 'rxjs';
 export class MakeRequestComponent implements OnInit {
 
   public loanList: any[] = [];
+  items: MenuItem[];
+
   addLoan:boolean = false;
   reqMakeForm: FormGroup;
   uploadedFiles: any[] = [];
-
-  
 
   private _jsonURL = '../../../../assets/requests.json';
 
@@ -49,6 +51,11 @@ public getJSON(): Observable<any> {
 
   ngOnInit() {
     this.ReqForm();
+    this.items = [
+      {label: 'Step 1'},
+      {label: 'Step 2'},
+      {label: 'Step 3'}
+  ];
   }
 
   ReqForm() {
