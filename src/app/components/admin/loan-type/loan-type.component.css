@@ -27,7 +27,7 @@ p-card {
 }
 .formInput {
   font-size: 18px;
-  width: 70%;
+  /* width: 70%; */
   height: 35px;
   border-radius: 20px
 }

@@ -34,7 +34,7 @@
                             <td style="text-align: center">
                                 <p-cellEditor>
                                     <ng-template pTemplate="input">
-                                        <input pInputText  [(ngModel)]="rowData.value" ng-model='rowData.value | number: 2' required>
+                                        <input pInputText  [(ngModel)]="rowData.value"  required>
                                     </ng-template>
                                     <ng-template pTemplate="output">
                                         {{rowData.value | currency:'LKR ' : 'symbol'}}
