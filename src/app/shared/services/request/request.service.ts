@@ -1,5 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { LoginData } from '../../classes/login';
+
 import { Observable, from } from 'rxjs';
 import { Request } from '../../classes/request';
 
@@ -10,6 +15,7 @@ import { Router } from '@angular/router'
 import { promise } from 'protractor';
 import { send } from 'q';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +24,7 @@ export class RequestService {
   requests: Request[];
 
   private responseData:any;
+  private loanData:any;
 
   constructor(private http: HttpClient) { }
 
@@ -64,5 +71,18 @@ export class RequestService {
 
 
   // }
+
+  addLoan(data:any){
+    console.log("came to make-request service");
+    console.log(data);
+     this.loanData= {data: data};
+     console.log(this.loanData);
+
+    this.http.post<{token: string}>('http://localhost:3000/api/users/signin',this.loanData).subscribe((response)=>{
+
+    });
+
+
+  }
 
 }
