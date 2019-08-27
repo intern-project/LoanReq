@@ -10,11 +10,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {DropdownModule} from 'primeng/dropdown';
 import {PanelMenuModule} from 'primeng/panelmenu';
-
-
-
-
-
+import {PaginatorModule} from 'primeng/paginator';
 
 
 @NgModule({
@@ -31,6 +27,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     MessageModule,
     TableModule,
     DropdownModule,
+    PaginatorModule
   ],
 })
 export class PrimeNgModule { }
