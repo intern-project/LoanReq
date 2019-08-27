@@ -12,7 +12,7 @@
     </p-sidebar>
 </div> -->
 
-<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+<p-sidebar [visible]="true" [baseZIndex]="10000" [showCloseIcon]="false" [modal]="false">
     <div *ngIf=adminRole>
         <h1 style="font-weight:normal">Admin dashbord</h1>
     </div>
@@ -29,4 +29,4 @@
     </div>
 </p-sidebar>
 
-<button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></button>
+<!-- <button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></button> -->
