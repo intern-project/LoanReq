@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { LoginData } from '../../classes/login';
 
@@ -9,7 +8,6 @@ import { Observable, from } from 'rxjs';
 import { Request } from '../../classes/request';
 
 import { environment } from '../../../../environments/environment';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router'
 import { promise } from 'protractor';
@@ -78,7 +76,7 @@ export class RequestService {
      this.loanData= {data: data};
      console.log(this.loanData);
 
-    this.http.post<{token: string}>('http://localhost:3000/api/users/signin',this.loanData).subscribe((response)=>{
+    this.http.post<{token: string}>(this._jsonURL,this.loanData).subscribe((response)=>{
 
     });
 
