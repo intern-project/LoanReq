@@ -23,6 +23,7 @@
   .table {
     margin-top: 8%;
   }
+ 
   p-header {
     font-size: 18px;
     margin-left: 10px;
@@ -95,5 +96,8 @@
 :host ::ng-deep .ui-message,
 :host ::ng-deep .ui-inputtext {
   margin-right: .25em;
+}
+button {
+  width: 250px;
 }
   

@@ -12,13 +12,17 @@
     </p-sidebar>
 </div> -->
 
-<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+<p-sidebar [visible]="true" [baseZIndex]="10000" [showCloseIcon]="false" [modal]="false">
+    <div class="img" >
+        <img src="https://image.flaticon.com/icons/svg/149/149071.svg"  >
+    </div>
     <div *ngIf=adminRole>
         <h1 style="font-weight:normal">Admin dashbord</h1>
     </div>
     <div *ngIf=officerRole>
         <h1 style="font-weight:normal">Officer dashbord</h1>
     </div>
+    
     <div class="admin" *ngIf="adminRole">
         <p-panelMenu [model]="admin"></p-panelMenu>
         <button pButton type="button" label="logout" class="ui-button-rounded" (click)="logout()"></button>
@@ -29,4 +33,4 @@
     </div>
 </p-sidebar>
 
-<button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></button>
+<!-- <button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></button> -->

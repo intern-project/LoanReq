@@ -21,6 +21,7 @@ export class CalculationComponent implements OnInit {
   termValue = false;
   tableLoading = false;
   cloned: { [s: string]: TermValue; } = {};
+  display = false;
 
 
   constructor(
@@ -107,6 +108,7 @@ export class CalculationComponent implements OnInit {
   // show the term tabale
   termClick() {
     this.tableLoading = true;
+    this.display =true;
   }
   // tabel edit
   onRowEditInit(item: TermValue) {
@@ -128,5 +130,9 @@ export class CalculationComponent implements OnInit {
     // this.loanType[index] = this.cloned[lType.rate];
     delete this.cloned[item.value];
   }
+  // show table
+  showDialog() {
+    this.display = true;
+}
   
 }
