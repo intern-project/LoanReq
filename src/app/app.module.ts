@@ -55,7 +55,7 @@ import {MenuItem} from 'primeng/api';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClient,
+    // HttpClient,
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true }],
   bootstrap: [AppComponent]

@@ -11,7 +11,8 @@ import { LoanType } from 'src/app/shared/classes/loan-type';
 export class CalculationComponent implements OnInit {
 
   years = [];
-  types: LoanType[];
+  // types: LoanType[];
+  types;
   termValueTabel: TermValue[] = [];
   termValueView: TermValue;
   amount: FormControl;
