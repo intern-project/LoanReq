@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api';                 //api
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from './shared/services/login/login.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'loanReq';
+
+constructor(private loginService: LoginService){}
+
+ngOnInit(){
+  this.loginService.autoAuthUser();
+}
+
 }

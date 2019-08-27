@@ -1,0 +1,102 @@
+<p-messages [(value)]="msgs"></p-messages>
+<app-side-bar></app-side-bar>
+<div class="">
+ <div class="btn">
+    <button pButton type="button" label="Add Loan" class="ui-button-rounded" (click)="uploadfileformview()"></button>
+</div>
+
+<div class="btn">
+        <button pButton type="button" label="View term calculation" class="ui-button-rounded" (click)="showtermvalValtable = true"></button>
+</div>
+</div>
+    <div class="loanType">
+            <div *ngIf = fillform>
+            <p-card>
+                <p-header>
+                    <b>Loan Request form</b>
+                </p-header>
+                <div class="container">
+                    <form [formGroup]="reqMakeForm">
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="name">
+                            <label for="a-input">Full name</label>
+                        </span>
+                        <div class="row">
+                            <div class="col-ms-3">
+                            <span class="ui-float-label">
+                                <input id="float-input" type="text" size="40" pInputText formControlName="address">
+                                <label for="float-input">address</label>
+                            </span>
+                        </div>
+                        <div class="col-ms-3">
+                            <span class="ui-float-label">
+                                <input id="float-input" type="text" size="20" pInputText formControlName="age">
+                                <label for="a-input">Age</label>
+                            </span>
+                        </div>
+                        </div>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="job">
+                            <label for="float-input">profession</label>
+                        </span>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="contact">
+                            <label for="a-input">contact No</label>
+                        </span>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="nic">
+                            <label for="float-input">NIC No</label>
+                        </span>
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="ammount">
+                            <label for="float-input">Ammount</label>
+                        </span>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="duration">
+                            <label for="float-input">duraton</label>
+                        </span>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="20" pInputText formControlName="reason">
+                            <label for="a-input">Reason</label>
+                        </span>
+
+                    </form>
+                    <div class="btn">
+                        <button pButton type="button" label="submit" class="ui-button-rounded" (click)="onSubmit()"
+                            [disabled]="reqMakeForm.invalid"></button>
+                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
+                            (click)="onCancel()"></button>
+                    </div>
+                </div>
+
+                <p-footer></p-footer>
+            </p-card>
+        </div>
+            <div *ngIf = uploadfileform>
+            <p-card>
+                <p-header>
+                    <b>document uploder</b>
+                </p-header>
+                <div class="container">
+                    <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+                </div>
+                <div class="btn">
+                        <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
+                            [disabled]="uploaditem === false"></button>
+                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
+                            (click)="onCancel()"></button>
+                    </div>
+            </p-card>
+        </div>
+    </div>
+
+
+<div *ngIf = showtermvalValtable class="loanType">
+        <app-calculation></app-calculation>
+</div>

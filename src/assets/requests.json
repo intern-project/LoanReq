@@ -1,0 +1,33 @@
+{
+  "request": [
+    {
+      "rid": "1",
+      "name": "sildenafil citrate",
+      "nic": "956321547V",
+      "job": "carpenter",
+      "age": "24",
+      "address": "234, Kandy",
+      "doc": "adcsdvsdv",
+      "contact" : "0775689249",
+      "reson": "",
+      "accepted": false,
+      "declined": false,
+      "pending": true
+    }, 
+    {
+      "rid": "2",
+      "name": "sildesd dfsa",
+      "nic": "956325647V",
+      "job": "carpenter",
+      "age": "24",
+      "address": "234, Kandy",
+      "doc": "adcsdvsdv",
+      "contact" : "0775689249",
+      "reson": "",
+      "accepted": false,
+      "declined": false,
+      "pending": true
+
+    }
+  ]
+}

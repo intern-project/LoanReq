@@ -1,0 +1,63 @@
+<app-side-bar></app-side-bar>
+<div class="loanType">
+     <p-card>
+        <p-header>
+            <b>Loan Types Details</b>
+        </p-header>
+        <div class="container">
+            <form [formGroup]="loanTypeForm">
+                <span class="ui-float-label">
+                    <input id="float-input" type="text"  pInputText formControlName="label" class="formInput">
+                    <label for="float-input">Loan Type</label>
+                     <!-- <p-message *ngIf="loanTypeForm.get('label').invalid" severity="error" text="Field is required"></p-message> -->
+                </span>
+
+                <span class="ui-float-label">
+                    <input id="float-input" type="text" size="30" pInputText formControlName="rate" class="formInput">
+                    <label for="float-input">Loan Rate</label>
+                </span>
+            </form>
+            <div class="btn">
+                <button pButton type="button" label="submit" class="ui-button-rounded" (click)="onSubmit()" [disabled]="loanTypeForm.invalid"></button>
+                <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger" (click)="onCancel()"></button>
+            </div>
+        </div>
+        <div class="table">
+            <p-table [value]="loanTypes" dataKey="title" editMode="row">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Loan Type</th>
+                        <th>Current Rate</th>
+                        <th style="width:8em"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+                    <tr [pEditableRow]="rowData">
+                        <td style="text-align: center">
+                            {{rowData.label}}
+                        </td>
+                        <td style="text-align: center">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.rate" required>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.rate}} %
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td style="text-align:center">
+                            <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+                            <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                            <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <p-footer></p-footer>
+    </p-card> 
+     
+</div>
+

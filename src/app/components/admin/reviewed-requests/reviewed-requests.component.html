@@ -1,0 +1,27 @@
+<app-side-bar></app-side-bar>
+<div class="wsize">
+  <p-table [value]="requests">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>NIC</th>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-req>
+      <tr>
+        <td *ngIf="req.pending == 0">{{req.nic}}</td>
+        <td *ngIf="req.pending == 0">{{req.name}}</td>
+        <td *ngIf="req.pending == 0">
+          <div class="cl1" *ngIf="req.accepted == 1">
+            <b>Accepted</b>
+          </div>
+          <div class="cl2" *ngIf="req.declined == 1">
+            <b>Declined</b>
+          </div>
+
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
