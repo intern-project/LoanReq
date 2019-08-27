@@ -1,16 +1,16 @@
 export interface Request {
-    rid: string;
-    name: string;
-    nic: string;
-    job: string;
-    age: string;
-    address: string;
-    doc: string;
-    reason: string;
-    contact: string;
-    duration: string;
-    amount: string;
-    accepted?: boolean;
-    declined?: boolean;
-    pending?: boolean;
+    rid: String;
+    name: String;
+    nic: String;
+    job: String;
+    age: String;
+    address: String;
+    doc: String;
+    reason: String;
+    duration: String;
+    ammount: String
+    contact: String;
+    accepted: Number;
+    declined: Number;
+    pending: Number;
  }

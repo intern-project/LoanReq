@@ -24,6 +24,11 @@ import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 import {StepsModule} from 'primeng/steps';
 import {MenuItem} from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MessageService} from 'primeng/api';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,14 +55,16 @@ import {MenuItem} from 'primeng/api';
     CardModule,
     InputTextModule,
     StepsModule,
+    MessagesModule,
+    MessageModule,
 
 
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    // HttpClient,
+
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true }],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

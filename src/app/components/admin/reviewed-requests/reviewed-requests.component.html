@@ -1,0 +1,18 @@
+<p-table [value]="requests">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>NIC</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-req>
+        <tr>
+            <td *ngIf="req.pending == 0">{{req.nic}}</td>
+            <td *ngIf="req.pending == 0">{{req.name}}</td>
+            <td *ngIf="req.pending == 0">
+                <p-button label="Click" (onClick)="handleClick(req.rid)"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
