@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, from } from 'rxjs';
+import { Request } from '../../classes/request';
 
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -12,12 +14,32 @@ import { send } from 'q';
   providedIn: 'root'
 })
 export class RequestService {
+  private _jsonURL = 'https://localhost:5001/api/request/';
+  requests: Request[];
 
   private responseData:any;
 
   constructor(private http: HttpClient) { }
 
-  getAllRequests() {
+  //Get All
+  getJSON(){
+
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this._jsonURL)
+        .toPromise()
+        .then(
+          res => { // Success
+            this.requests = res as Request[]
+            console.log(this.requests);
+            localStorage.setItem('req', JSON.stringify(this.requests));
+            resolve();
+          }
+        );
+    });
+    return promise;
+  }
+
+  acceptLOAN() {
     
   }
 
