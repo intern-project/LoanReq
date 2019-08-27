@@ -16,7 +16,7 @@ import { AuthInterceptor } from './shared/services/login/auth-interceptor';
 import { RequestComponent } from './components/admin/request/request.component';
 import { MakeRequestComponent } from './components/officer/make-request/make-request.component';
 import { LoanTypeComponent } from './components/admin/loan-type/loan-type.component';
-import { SideBarComponent } from './common/side-bar/side-bar.component';
+import { SideBarComponent } from './components/common/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
 import {SidebarModule} from 'primeng/sidebar';
