@@ -62,6 +62,15 @@ export class LoginService {
 
   }
 
+  logout(){
+
+    this.token = null;
+    this.isAuthenticated = false;
+    this.authStateListner.next(false);
+    this.clearAuthData();
+    this.router.navigate(['/']);
+  }
+
 private saveAuthData(token: string){
     localStorage.setItem('token',token);
 }
