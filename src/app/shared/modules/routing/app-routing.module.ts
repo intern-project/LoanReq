@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'admin/pending', component: PendingRequestsComponent },
   { path: 'admin/reviewed', component: ReviewedRequestsComponent },
   { path: 'admin/loan-type', component: LoanTypeComponent},
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'admin/request/:id', component: RequestComponent },
   { path: 'makeReq', component: MakeRequestComponent }, //canActivate: [AuthGuard] Add the Guards
   { path: '**', component: LoginComponent }
