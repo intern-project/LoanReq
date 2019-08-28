@@ -24,8 +24,8 @@
         <h3>Support Documents: {{request.doc}}</h3>
       </div>
       <div *ngIf="request.rid == reqid">
-        <button (onClick)="clickAccept()" style="padding:3px; margin: 10px; font-size: 15px" pButton type="button" class="ui-button-success"  ><b>Accept</b></button>
-        <button style="padding:3px; font-size: 15px" pButton type="button" class="ui-button-danger" (onClick)="clickDecline()"><b>Decline</b></button>
+        <button (click)="clickAccept(request)" style="padding:3px; margin: 10px; font-size: 15px" pButton type="button" class="ui-button-success"  ><b>Accept</b></button>
+        <button style="padding:3px; font-size: 15px" pButton type="button" class="ui-button-danger" (click)="clickDecline()"><b>Decline</b></button>
       </div>
     </div>
   </p-card>

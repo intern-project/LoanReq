@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
-import { LoginData } from '../../classes/login';
-
-import { Observable, from } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Request } from '../../classes/request';
-
-import { environment } from '../../../../environments/environment';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router'
-import { promise } from 'protractor';
-import { send } from 'q';
+import { Router } from '@angular/router';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
-  private _jsonURL = 'https://localhost:5001/api/request/';
+  private _jsonURL = 'https://localhost:5001/api/request';
   requests: Request[];
 
   private responseData:any;
   private loanData:any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public router:Router) { }
 
   //Get All
   getJSON(){
@@ -43,10 +33,21 @@ export class RequestService {
     });
     return promise;
   }
-
-  acceptLOAN() {
-    
+// Accept Loan Requst
+  UpdateLOAN(request: Request) {
+    const header = new HttpHeaders();
+    header.set('content-Type', 'application/json');
+    const options = { headers: header };
+    const id = request.rid;
+    const url = `${this._jsonURL}/${id}`;
+    this.http.put<Request>(url, request, options).
+      subscribe(val => {console.log('done')
+                        this.router.navigate(['/admin/reviewed'])
+                        },
+        response => {console.log("Error", response)})
   }
+
+  
 
   add({severity: string, summary: sum, detail: any}){
 
