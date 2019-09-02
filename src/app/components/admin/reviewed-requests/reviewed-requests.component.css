@@ -5,6 +5,7 @@
 .requestsTable {
     margin-top: 3%;
     margin-left: 15%;
+}
 
 .cl1 {
     color: green;
@@ -16,4 +17,11 @@
 .wsize {
     margin-left: 300px;
 
+}
+
+.accepted {
+    color: green;
+}
+.declined {
+    color: red;
 }
