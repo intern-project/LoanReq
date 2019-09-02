@@ -11,8 +11,10 @@ export class RequestService {
   private _jsonURL = 'https://localhost:5001/api/request';
   requests: Request[];
 
-  private responseData:any;
-  private loanData:any;
+  private responseData: any;
+  private loanData: any;
+  mkreq: any = {};
+
 
   constructor(private http: HttpClient, public router:Router) { }
 
@@ -71,16 +73,9 @@ export class RequestService {
 
   // }
 
-  addLoan(data:any){
-    console.log("came to make-request service");
-    console.log(data);
-     this.loanData= {data: data};
-     console.log(this.loanData);
 
-    this.http.post<{token: string}>(this._jsonURL,this.loanData).subscribe((response)=>{
-
-    });
-
+  addLoan(data: Request): Observable<Request> {
+    return this.http.post<Request>(this.jsonURL, data);
 
   }
 

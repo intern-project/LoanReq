@@ -40,7 +40,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     StepsModule,
     MessagesModule,
     MessageModule,
-    BreadcrumbModule
+    BreadcrumbModule,
 
   ],
 })

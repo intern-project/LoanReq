@@ -23,7 +23,6 @@ import {SidebarModule} from 'primeng/sidebar';
 import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 import {StepsModule} from 'primeng/steps';
-import {MenuItem} from 'primeng/api';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
@@ -51,17 +50,9 @@ import { AllRequestComponent } from './components/officer/all-request/all-reques
     AppRoutingModule,
     PrimeNgModule,
     AngularFontAwesomeModule,
-    FileUploadModule,
-    SidebarModule,
-    CardModule,
-    InputTextModule,
-    StepsModule,
-    MessagesModule,
-    MessageModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },MessageService],
   bootstrap: [AppComponent]
