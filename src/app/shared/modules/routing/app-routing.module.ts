@@ -12,6 +12,7 @@ import { AllRequestComponent } from 'src/app/components/officer/all-request/all-
 
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'admin/pending', component: PendingRequestsComponent },
   { path: 'admin/reviewed', component: ReviewedRequestsComponent },
   { path: 'admin/loan-type', component: LoanTypeComponent},
@@ -19,7 +20,6 @@ const routes: Routes = [
   { path: 'officer/term-calculator', component: CalculationComponent},
   { path: 'officer/make-requests', component: MakeRequestComponent }, //canActivate: [AuthGuard] Add the Guards
   { path: 'officer/all-requests', component: AllRequestComponent},
-  { path: 'login', component: LoginComponent },
   { path: '**', component: LoginComponent }
 
 ];

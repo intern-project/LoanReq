@@ -10,6 +10,7 @@ import { CalculationComponent } from './components/officer/calculation/calculati
 import { PendingRequestsComponent } from './components/admin/pending-requests/pending-requests.component';
 import { PrimeNgModule } from './shared/modules/prime-ng/prime-ng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
 import { ReviewedRequestsComponent } from './components/admin/reviewed-requests/reviewed-requests.component';
 import { AuthInterceptor } from './shared/services/login/auth-interceptor';
@@ -18,6 +19,14 @@ import { MakeRequestComponent } from './components/officer/make-request/make-req
 import { LoanTypeComponent } from './components/admin/loan-type/loan-type.component';
 import { SideBarComponent } from './components/common/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
+import {SidebarModule} from 'primeng/sidebar';
+import {CardModule} from 'primeng/card';
+import {InputTextModule} from 'primeng/inputtext';
+import {StepsModule} from 'primeng/steps';
+import {MenuItem} from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
 import { AllRequestComponent } from './components/officer/all-request/all-request.component';
 
@@ -34,6 +43,7 @@ import { AllRequestComponent } from './components/officer/all-request/all-reques
     LoanTypeComponent,
     SideBarComponent,
     AllRequestComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +52,13 @@ import { AllRequestComponent } from './components/officer/all-request/all-reques
     AppRoutingModule,
     PrimeNgModule,
     AngularFontAwesomeModule,
-
+    FileUploadModule,
+    SidebarModule,
+    CardModule,
+    InputTextModule,
+    StepsModule,
+    MessagesModule,
+    MessageModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

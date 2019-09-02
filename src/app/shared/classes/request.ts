@@ -1,5 +1,5 @@
 export interface Request {
-    rid: String;
+    rid: Number;
     name: String;
     nic: String;
     job: String;
