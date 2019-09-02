@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TermValue } from 'src/app/shared/classes/term-value';
-import { LoanType } from 'src/app/shared/classes/loan-type';
+import { LoanType, ClonedLoanType } from 'src/app/shared/classes/loan-type';
+import { SideBarComponent } from '../../common/side-bar/side-bar.component';
+import { LoanTypeService } from 'src/app/shared/services/loan-type/loan-type.service';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {MenuItem} from 'primeng/api';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-calculation',
@@ -9,23 +14,31 @@ import { LoanType } from 'src/app/shared/classes/loan-type';
   styleUrls: ['./calculation.component.css']
 })
 export class CalculationComponent implements OnInit {
+  
+  @ViewChild(SideBarComponent, {static: true}) sidebar;
 
-  years = [];
-  // types: LoanType[];
-  types;
-  termValueTabel: TermValue[] = [];
-  termValueView: TermValue;
-  amount: FormControl;
+  // form creation
   calculationForm: FormGroup;
+  amount: FormControl;
+  loanTypes: LoanType[];
   term: number;
   termValue = false;
+  // tabel creation
+  termValueTabel: TermValue[] = [];
   tableLoading = false;
   cloned: { [s: string]: TermValue; } = {};
   display = false;
+  // breadcrumb items
+  items: MenuItem[];
+  home: MenuItem;
+  // dropdowns
+  types: ClonedLoanType[];
+  years = [];
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private ltService: LoanTypeService
   ) {
     this.years = [
       {label: 'One Year', value: 1},
@@ -39,14 +52,28 @@ export class CalculationComponent implements OnInit {
       {label: 'Nine Years', value: 9},
       {label: 'Ten Years', value: 10},
     ];
-    this.types = [
-      {id: '', label: 'Gold Loan', value: 10 },
-      {id: '', label: 'Vehice Loan' , value: 5},
-    ];
   }
 
   ngOnInit() {
+    this.sidebar.officerRole = true;
+    this.initBreadCrumb();
     this.initForm();
+    this.getLoanTypes();
+  }
+  // initiate bread crumb
+  private initBreadCrumb() {
+    this.items = [
+      {label: 'Officer'},
+      {label: 'Term Calculator', url: '/officer/term-calculator'}
+    ];
+    this.home = {icon: 'pi pi-home'};
+  }
+  // get loan types from db
+  private getLoanTypes(): void {
+    this.ltService.loanTypesGet().subscribe(loanTypes => {
+      this.loanTypes = loanTypes;
+      this.types = this.loanTypes.map(item => ({...item, value: item.rate}));
+    });
   }
   // initiate the form
   private initForm() {
@@ -72,7 +99,7 @@ export class CalculationComponent implements OnInit {
       months: Number(this.calculationForm.get('duration').value * 12),
       type: Number(this.calculationForm.get('type').value)
     };
-    // item.value = Number(item.value);
+    // Calculate the term
     const tobePaidMonth = (cal.months - item.label);
     const toBePaid = ((this.term * (tobePaidMonth)) - item.value);
     let newTerm = toBePaid / (tobePaidMonth);
@@ -99,7 +126,6 @@ export class CalculationComponent implements OnInit {
     this.term = ((cal.amount + (cal.amount * interest)) / cal.months);
     const val = this.term.toFixed(2);
     this.term = Number(val);
-    
     if (this.term) {
       this.termValue = true;
     }
@@ -108,7 +134,7 @@ export class CalculationComponent implements OnInit {
   // show the term tabale
   termClick() {
     this.tableLoading = true;
-    this.display =true;
+    this.display = true;
   }
   // tabel edit
   onRowEditInit(item: TermValue) {

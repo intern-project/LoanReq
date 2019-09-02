@@ -4,6 +4,7 @@ import { PrimeNgModule } from '../../../shared/modules/prime-ng/prime-ng.module'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Message} from 'primeng/components/common/api';
 import {CardModule} from 'primeng/card';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -27,13 +30,15 @@ export class LoginComponent implements OnInit {
   onLogin(){
     console.log('login works');
     console.log(this.form.value.email);
-    if(this.form.invalid){
-      return
+    
+    console.log(this.form.get('email').value);
+    if (this.form.get('email').value === 'admin') {
+      this.router.navigate(['/admin/pending']);
+    }
+    if (this.form.get('email').value === 'officer') {
+      this.router.navigate(['/officer/make-requests']);
     }
 
-    else{
-
-    }
 
   }
 

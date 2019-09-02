@@ -1,0 +1,16 @@
+.breadCrumb {
+    margin-left: 15%;
+}
+.table {
+    margin-top: 5%;
+    margin-left: 15%
+}
+.pending {
+    color: cornflowerblue;
+}
+.accepted {
+    color: green;
+}
+.declined {
+    color: red;
+}

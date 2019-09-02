@@ -19,7 +19,6 @@ import { MakeRequestComponent } from './components/officer/make-request/make-req
 import { LoanTypeComponent } from './components/admin/loan-type/loan-type.component';
 import { SideBarComponent } from './components/common/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import {FileUploadModule} from 'primeng/fileupload';
 import {SidebarModule} from 'primeng/sidebar';
 import {CardModule} from 'primeng/card';
@@ -29,6 +28,7 @@ import {MenuItem} from 'primeng/api';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
+import { AllRequestComponent } from './components/officer/all-request/all-request.component';
 
 
 @NgModule({
@@ -41,6 +41,8 @@ import {MessageService} from 'primeng/api';
     RequestComponent,
     MakeRequestComponent,
     LoanTypeComponent,
+    SideBarComponent,
+    AllRequestComponent,
     SideBarComponent
   ],
   imports: [

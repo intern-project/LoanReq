@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
-import { SelectItem } from 'primeng/api';
+import { SelectItem, MessageService, MenuItem, Message } from 'primeng/api';
 import { LoanType } from 'src/app/shared/classes/loan-type';
 import { LoanTypeService } from 'src/app/shared/services/loan-type/loan-type.service';
+import { SideBarComponent } from '../../common/side-bar/side-bar.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @Component({
   selector: 'app-loan-type',
@@ -10,22 +13,39 @@ import { LoanTypeService } from 'src/app/shared/services/loan-type/loan-type.ser
   styleUrls: ['./loan-type.component.css']
 })
 export class LoanTypeComponent implements OnInit {
+
+  @ViewChild(SideBarComponent, {static: true}) sidebar;
+
   loanTypeForm: FormGroup;
   loanTypes: LoanType[] = [];
   loanType: LoanType[];
   cloned: { [s: string]: LoanType; } = {};
   id;
-  // loanTypeTest: LoanType[]=[];
-
+  // breadcrumb items
+  items: MenuItem[];
+  home: MenuItem;
+  // message service
+  msgs: Message[] = [];
 
   constructor(
     public fb: FormBuilder,
-    private ltServevice: LoanTypeService
+    private ltService: LoanTypeService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
+    this.sidebar.adminRole = true;
+    this.initBreadCrumb();
     this.initForm();
     this.getLoanTypes();
+  }
+  // initiate bread crumb
+  private initBreadCrumb() {
+    this.items = [
+      {label: 'Admin  '},
+      {label: 'Loan Types', url: '/admin/loan-type'}
+    ];
+    this.home = {icon: 'pi pi-home'};
   }
   // intiate form
   private initForm() {
@@ -37,20 +57,30 @@ export class LoanTypeComponent implements OnInit {
   }
   // get loan types from db
   private getLoanTypes(): void {
-    this.ltServevice.loanTypesGet().subscribe(item => (this.loanTypes.push(...item) ));
+    this.ltService.loanTypesGet().subscribe(item => (this.loanTypes.push(...item) ));
   }
   // form submission add to db
   onSubmit() {
-    console.log(this.loanTypeForm.value);
-    this.loanTypeForm.get('id').setValue(2);
+    this.loanTypeForm.get('id').setValue(0);
     const data = this.loanTypeForm.value;
-    this.ltServevice.loanTypesAdd(data).subscribe();
-    this.loanTypes.push(data);
+    this.ltService.loanTypesAdd(data).
+      subscribe(val => {
+                  console.log('Successfully Added.');
+                  this.loanTypes.push(data);
+                  this.msgs = [];
+                  this.msgs.push({severity: 'success', summary: 'Success Message : ', detail: 'Submitting Successfully!'});
+                },
+                response => {
+                  console.log('Error Occoured -->', response);
+                  this.msgs = [];
+                  this.msgs.push({severity: 'error', summary: 'Error Message : ', detail: 'Submitting Failed!'});
+                 },
+      );
     this.initForm();
   }
   // form update
   private onUpdate(lType: LoanType) {
-    this.ltServevice.loanTypeUpdate(lType);
+    this.ltService.loanTypeUpdate(lType);
   }
   // form submission cancel
   onCancel() {
@@ -66,9 +96,9 @@ export class LoanTypeComponent implements OnInit {
         delete this.cloned[lType.rate];
         console.log(lType.rate);
         this.onUpdate(lType);
-        // this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Rate is updated'});
     } else {
-        // this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Rate is required'});
     }
   }
   // edit rate value
