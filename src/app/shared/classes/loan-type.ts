@@ -3,3 +3,8 @@ export interface LoanType {
   label: string;
   rate: number;
 }
+
+export interface ClonedLoanType {
+  label: string;
+  value: number;
+}

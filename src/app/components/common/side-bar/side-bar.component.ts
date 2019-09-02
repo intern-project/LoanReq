@@ -12,8 +12,9 @@ export class SideBarComponent implements OnInit {
 
   admin: MenuItem[];
   officer: MenuItem[];
-  adminRole = true;
-  officerRole = false;
+  sidebarVisible = true;
+  adminRole = false;
+  officerRole = false ;
 
   constructor(
     private router: Router,
@@ -23,7 +24,7 @@ export class SideBarComponent implements OnInit {
        icon: 'pi pi-clock',
        routerLink: ['/admin/pending'],
        style: {'margin-bottom': '10px', 'padding-top': '1em'}},
-      {label: 'Approved Request',
+      {label: 'Reviewed Request',
        icon: 'pi pi-check',
        routerLink: ['/admin/reviewed'],
        style: {'margin-bottom': '10px'}},
@@ -33,17 +34,17 @@ export class SideBarComponent implements OnInit {
        style: {'margin-bottom': '10px'}},
     ];
     this.officer = [
-      {label: 'Pending Request',
-       icon: 'pi pi-clock',
-       routerLink: ['/admin/pending'],
+      {label: 'Loan Request Form',
+       icon: 'pi pi-plus-circle',
+       routerLink: ['/officer/make-requests'],
        style: {'margin-bottom': '20px', 'background-color': 'black'}},
-      {label: 'Approved Request',
-       icon: 'pi pi-check',
-       routerLink: ['/admin/reviewed'],
+      {label: 'All Requests',
+       icon: 'pi pi-list',
+       routerLink: ['/officer/all-requests'],
        style: {'margin-bottom': '20px'}},
-      {label: 'Loan Types',
-       icon: 'pi pi-dollar',
-       routerLink: [''],
+      {label: 'Term Calculator',
+       icon: 'pi pi-cog',
+       routerLink: ['/officer/term-calculator'],
        style: {'margin-bottom': '20px'}},
     ];
 

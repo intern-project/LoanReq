@@ -1,3 +1,10 @@
+.breadCrumb {
+    margin-left: 15%;
+}
+.calculation {
+    margin-top: 5%;
+    margin-left: 35%
+}
 .ui-float-label {
     width: 50%;
     margin-top: 3%
@@ -16,4 +23,4 @@ h3 {
 }
 .term {
     margin-left: 32%
-}
+} 

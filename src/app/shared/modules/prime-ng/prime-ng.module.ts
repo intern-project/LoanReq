@@ -13,6 +13,10 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {PaginatorModule} from 'primeng/paginator';
 import {DialogModule} from 'primeng/dialog';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputTextModule } from 'primeng/inputtext';
+import { StepsModule } from 'primeng/steps';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @NgModule({
   exports: [
@@ -30,7 +34,14 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
     DropdownModule,
     PaginatorModule,
     DialogModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    FileUploadModule,
+    InputTextModule,
+    StepsModule,
+    MessagesModule,
+    MessageModule,
+    BreadcrumbModule
+
   ],
 })
 export class PrimeNgModule { }

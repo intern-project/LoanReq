@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,6 +14,7 @@ import { StepsModule } from 'primeng/steps';
 import { MenuItem } from 'primeng/api';
 import {Message} from 'primeng/components/common/api';
 import {MessageService} from 'primeng/components/common/messageservice';
+import { SideBarComponent } from '../../common/side-bar/side-bar.component';
 
 
 
@@ -25,15 +26,14 @@ import {MessageService} from 'primeng/components/common/messageservice';
 })
 export class MakeRequestComponent implements OnInit {
 
+  @ViewChild(SideBarComponent, {static: true}) sidebar;
+
   public loanList: any[] = [];
   items: MenuItem[];
 
-
-  
-
   addLoan: boolean = false;
   fillform:boolean = false;
-  uploadfileform:boolean = false;
+  uploadfileform:boolean = true;
   uploaditem:boolean = false;
   showtermvalValtable:boolean = false;
 
@@ -45,6 +45,10 @@ export class MakeRequestComponent implements OnInit {
 
   requests: Request[];
   msgs: Message[] = [];
+
+  // breadcrumb items
+  breadCrumbItems: MenuItem[];
+  home: MenuItem;
 
   constructor(
     public fb: FormBuilder,
@@ -66,12 +70,22 @@ export class MakeRequestComponent implements OnInit {
 
 
   ngOnInit() {
+    this.sidebar.officerRole = true;
+    this.initBreadCrumb();
     this.ReqForm();
     this.items = [
       { label: 'Step 1' },
       { label: 'Step 2' },
       { label: 'Step 3' }
     ];
+  }
+  // initiate bread crumb
+  private initBreadCrumb() {
+    this.breadCrumbItems = [
+      {label: 'Officer'},
+      {label: 'Loan Request Form', url: '/officer/make-requests'}
+    ];
+    this.home = {icon: 'pi pi-home'};
   }
 
   ReqForm() {
@@ -109,6 +123,7 @@ export class MakeRequestComponent implements OnInit {
     this.fillform = false;
     this.uploaditem = false;
     this.loanList = [];
+    this.uploadfileform = true;
   }
 
   onUpload(event) {
