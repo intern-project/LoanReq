@@ -32,8 +32,8 @@ export class MakeRequestComponent implements OnInit {
   items: MenuItem[];
 
   addLoan: boolean = false;
-  fillform:boolean = true;
-  uploadfileform:boolean = false;
+  fillform:boolean = false;
+  uploadfileform:boolean = true;
   uploaditem:boolean = false;
   showtermvalValtable:boolean = false;
 
@@ -90,7 +90,7 @@ export class MakeRequestComponent implements OnInit {
 
   ReqForm() {
     this.reqMakeForm = this.fb.group({
-      rid: [],
+      rid: [''],
       name: ['', Validators.required],
       address: ['', Validators.required],
       age: ['', Validators.required],
@@ -101,31 +101,20 @@ export class MakeRequestComponent implements OnInit {
       duration: ['', Validators.required],
       reason: ['', Validators.required],
       doc: ['1', Validators.required],
-      pending: [1, Validators.required],
-      accepted: [0, Validators.required],
-      declined: [0, Validators.required]
+      pending: ['1', Validators.required],
+      accepted: ['0', Validators.required],
+      declined: ['0', Validators.required]
     });
   }
 
   onSubmit() {
-    this.reqMakeForm.get('rid').setValue(10);
     console.log(this.reqMakeForm.value);
     const data = this.reqMakeForm.value;
     this.loanList.push(data);
     console.log(this.loanList);
-    this.Requestservice.addLoan(data).subscribe(
-      val => {
-        console.log('Successfully Added.');
-        this.showSuccessform();
-      },
-      response => {
-        console.log('Error Occoured -->', response);
-        this.showError();
-       },
-    );
+    this.Requestservice.addLoan(this.loanList);
+    this.showSuccessform();
     this.fillform = false;
-    this.ReqForm();
-    this.uploadfileform = true;
   }
 
 
