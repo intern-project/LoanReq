@@ -31,12 +31,15 @@
         <div *ngIf="request.rid == reqid">
           <h3>Loan Ammount: Rs.{{ request.ammount }}</h3>
         </div>
+        <div *ngIf="request.rid == reqid">
+            <h3>Loan Duration: {{ request.duration }}</h3>
+          </div>
         <div *ngIf="request.rid == reqid && request.declined==1">
           <h3>Reason: {{ request.reason }}</h3>
         </div>
         <div *ngIf="request.rid == reqid && request.pending == 1">
           <button
-            (onClick)="clickAccept()"
+            (click)="clickAccept(request)"
             style="padding:3px; margin: 10px; font-size: 15px"
             pButton
             type="button"
@@ -49,7 +52,7 @@
             pButton
             type="button"
             class="ui-button-danger"
-            (onClick)="clickDecline()"
+            (click)="clickDecline(request)"
           >
             <b>Decline</b>
           </button>

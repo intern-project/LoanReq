@@ -13,14 +13,14 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-req>
-      <tr>
-        <td *ngIf="req.pending == 0">{{ req.nic }}</td>
-        <td *ngIf="req.pending == 0">{{ req.name }}</td>
+      <tr *ngIf="req.pending == 0">
+        <td >{{ req.nic }}</td>
+        <td >{{ req.name }}</td>
         <td>
-          <p *ngIf="req.pending == 0 && req.accepted == 1" class="accepted"><b>Accepted</b></p>
-          <p *ngIf="req.pending == 0 && req.declined == 1" class="declined"><b>Declined</b></p>
+          <p *ngIf="req.accepted == 1" class="accepted"><b>Accepted</b></p>
+          <p *ngIf="req.declined == 1" class="declined"><b>Declined</b></p>
         </td>
-        <td *ngIf="req.pending == 0">
+        <td >
           <p-button label="More Info" (onClick)="handleClick(req.rid)" icon="pi pi-info-circle" ></p-button>
         </td>
       </tr>
