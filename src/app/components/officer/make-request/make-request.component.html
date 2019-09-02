@@ -4,6 +4,16 @@
 </div>    
 <div class="formPage">
 <p-messages [(value)]="msgs" [style] = "{'width': '25%', 'margin-left': '75%'}"></p-messages>
+<div *ngIf="showLoader" class="loader animation-start" style="position: absolute;margin: 200px auto;z-index: 5000;">
+    <span class="circle delay-1 size-2"></span>
+    <span class="circle delay-2 size-4"></span>
+    <span class="circle delay-3 size-6"></span>
+    <span class="circle delay-4 size-7"></span>
+    <span class="circle delay-5 size-7"></span>
+    <span class="circle delay-6 size-6"></span>
+    <span class="circle delay-7 size-4"></span>
+    <span class="circle delay-8 size-2"></span>
+  </div>
     <div class="loanType">
             <div *ngIf = uploadfileform>
                 <p-card>
