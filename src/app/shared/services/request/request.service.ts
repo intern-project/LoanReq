@@ -2,31 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Request } from '../../classes/request';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
-  private _jsonURL = 'https://localhost:5001/api/request';
+   jsonURL = 'https://localhost:5001/api/Request';
   requests: Request[];
 
   private responseData: any;
   private loanData: any;
   mkreq: any = {};
 
+  constructor(private http: HttpClient, public router: Router) { }
 
-  constructor(private http: HttpClient, public router:Router) { }
+  // Get All
+  getJSON() {
 
-  //Get All
-  getJSON(){
-
-    let promise = new Promise((resolve, reject) => {
-      this.http.get(this._jsonURL)
+    const promise = new Promise((resolve, reject) => {
+      this.http.get(this.jsonURL)
         .toPromise()
         .then(
           res => { // Success
-            this.requests = res as Request[]
+            this.requests = res as Request[];
             console.log(this.requests);
             localStorage.setItem('req', JSON.stringify(this.requests));
             resolve();
@@ -41,17 +41,17 @@ export class RequestService {
     header.set('content-Type', 'application/json');
     const options = { headers: header };
     const id = request.rid;
-    const url = `${this._jsonURL}/${id}`;
+    const url = `${this.jsonURL}/${id}`;
     this.http.put<Request>(url, request, options).
-      subscribe(val => {console.log('done')
-                        this.router.navigate(['/admin/reviewed'])
+      subscribe(val => {console.log('done');
+                        this.router.navigate(['/admin/reviewed']);
                         },
-        response => {console.log("Error", response)})
+        response => {console.log('Error', response);});
   }
 
-  
 
-  add({severity: string, summary: sum, detail: any}){
+
+  add({severity: string, summary: sum, detail: any}) {
 
 
   }
@@ -73,10 +73,8 @@ export class RequestService {
 
   // }
 
-
   addLoan(data: Request): Observable<Request> {
     return this.http.post<Request>(this.jsonURL, data);
-
   }
 
 }
