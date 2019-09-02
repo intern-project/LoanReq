@@ -20,6 +20,9 @@ export class RequestComponent implements OnInit {
   requests: Request[];
 
   reqid = 0;
+  // breadcrumb items
+  items: MenuItem[];
+  home: MenuItem;
 
   constructor(private http: HttpClient, public router: Router, public requestService:RequestService) {}
 

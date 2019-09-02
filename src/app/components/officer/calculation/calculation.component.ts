@@ -6,7 +6,6 @@ import { SideBarComponent } from '../../common/side-bar/side-bar.component';
 import { LoanTypeService } from 'src/app/shared/services/loan-type/loan-type.service';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {MenuItem} from 'primeng/api';
-import { url } from 'inspector';
 
 @Component({
   selector: 'app-calculation',
