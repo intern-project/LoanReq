@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Request } from '../../classes/request';
+import { fileUpload } from '../../classes/fileUpload';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class RequestService {
 
   private responseData: any;
   private loanData: any;
-  mkreq: any = {};
+  private uploaddata: any;
 
   constructor(private http: HttpClient, public router: Router) { }
 
@@ -48,33 +48,39 @@ export class RequestService {
                         },
         response => {console.log('Error', response);});
   }
-
-
-
+  
   add({severity: string, summary: sum, detail: any}) {
-
-
   }
 
-  // addLoan(Req) {
-
-  //   console.log("create user in database called");
-  //   let headers = new HttpHeaders();
-  //   headers.append("Content-Type", "application/json");
-  //   var data = { Req }
-
-  //   return this.http.post(environment.apiBaseUrl + "addLoan", data, { headers: headers }).subscribe((res: any) => {
-  //     console.log(res)
-
-  //     this.responseData = res;
-
-  //   });
 
 
-  // }
+
+  addLoan(data: Request): Observable<Request> {
+    const header = new HttpHeaders();
+    header.set('content-Type', 'application/json');
+    const options = { headers: header };
+    console.log('came to make-request service');
+    console.log(data);
+    this.loanData = {data};
+    console.log(this.loanData);
+    return this.http.post<Request>(this.jsonURL, data, options);
+
+  }
 
   addLoan(data: Request): Observable<Request> {
     return this.http.post<Request>(this.jsonURL, data);
   }
+
+  uploadfile(data: fileUpload): Observable<fileUpload> {
+    const header = new HttpHeaders();
+    header.set('content-Type', 'application/json');
+    const options = { headers: header };
+    console.log('came to make-request service file uploader');
+    console.log(data);
+    this.uploaddata = {data};
+    console.log(this.uploaddata);
+    return this.http.post<fileUpload>(this.jsonURL, data, options);
+
+  } 
 
 }
