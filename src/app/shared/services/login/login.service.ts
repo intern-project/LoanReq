@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { LoginData } from '../../classes/login';
 
 @Injectable({
@@ -46,21 +46,24 @@ export class LoginService {
 
     const loginData:LoginData = {email: email, password: password};
 
-    this.http.post<{token: string}>('http://localhost:3000/api/users/signin',loginData).subscribe((response)=>{
+    this.http.post<{token: string, role:string}>('http://localhost:53125/api/login', loginData).subscribe((response)=>{
       const token = response.token;
+      const role = response.role;
       console.log(token);
+      console.log(role);
       this.token=token;
       if(token){
         this.isAuthenticated = true;
         this.authStateListner.next(true);
         this.saveAuthData(token);
-        this.router.navigate(['/']);
+        this.router.navigate(['admin/pending']);
       }
 
     });
 
 
   }
+
 
   logout(){
 

@@ -64,7 +64,7 @@ import {MessageService} from 'primeng/api';
     ReactiveFormsModule,
 
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },MessageService],
+  providers: [MessageService], //{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },
   bootstrap: [AppComponent]
 })
 export class AppModule { }
