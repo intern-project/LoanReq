@@ -1,15 +1,36 @@
-<p-messages [(value)]="msgs"></p-messages>
 <app-side-bar></app-side-bar>
-<div class="">
- <div class="btn">
-    <button pButton type="button" label="Add Loan" class="ui-button-rounded" (click)="uploadfileformview()"></button>
-</div>
-
-<div class="btn">
-        <button pButton type="button" label="View term calculation" class="ui-button-rounded" (click)="showtermvalValtable = true"></button>
-</div>
-</div>
+<div class="breadCrumb">
+        <p-breadcrumb [model]="breadCrumbItems" [home]="home"></p-breadcrumb>
+</div>    
+<div class="formPage">
+<p-messages [(value)]="msgs" [style] = "{'width': '25%', 'margin-left': '75%'}"></p-messages>
+<div *ngIf="showLoader" class="loader animation-start" style="position: absolute;margin: 200px auto;z-index: 5000;">
+    <span class="circle delay-1 size-2"></span>
+    <span class="circle delay-2 size-4"></span>
+    <span class="circle delay-3 size-6"></span>
+    <span class="circle delay-4 size-7"></span>
+    <span class="circle delay-5 size-7"></span>
+    <span class="circle delay-6 size-6"></span>
+    <span class="circle delay-7 size-4"></span>
+    <span class="circle delay-8 size-2"></span>
+  </div>
     <div class="loanType">
+            <div *ngIf = uploadfileform>
+                <p-card>
+                    <p-header>
+                        <b>Document Uploder</b>
+                    </p-header>
+                    <div class="container">
+                        <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+                    </div>
+                    <div class="btn">
+                        <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
+                            [disabled]="uploaditem === false"></button>
+                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
+                            (click)="onCancel()"></button>
+                    </div>
+                </p-card>
+            </div>
             <div *ngIf = fillform>
             <p-card>
                 <p-header>
@@ -78,25 +99,5 @@
                 <p-footer></p-footer>
             </p-card>
         </div>
-            <div *ngIf = uploadfileform>
-            <p-card>
-                <p-header>
-                    <b>document uploder</b>
-                </p-header>
-                <div class="container">
-                    <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
-                </div>
-                <div class="btn">
-                        <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
-                            [disabled]="uploaditem === false"></button>
-                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
-                            (click)="onCancel()"></button>
-                    </div>
-            </p-card>
-        </div>
     </div>
-
-
-<div *ngIf = showtermvalValtable class="loanType">
-        <app-calculation></app-calculation>
 </div>

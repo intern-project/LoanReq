@@ -1,4 +1,26 @@
+.breadCrumb {
+    margin-left: 15%;
+}
+.calculation {
+    margin-top: 5%;
+    margin-left: 35%
+}
 .ui-float-label {
     width: 50%;
     margin-top: 3%
 }
+p-header {
+    margin-left: 95%;
+    font-size: 18px;
+    color: gray;
+}
+h3 {
+    margin-top: 0;
+    margin-left: 28%
+}
+.formCal {
+    margin-left: 35%
+}
+.term {
+    margin-left: 32%
+} 

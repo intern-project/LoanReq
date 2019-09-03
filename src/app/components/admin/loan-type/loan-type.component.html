@@ -1,4 +1,8 @@
 <app-side-bar></app-side-bar>
+<div class="breadCrumb">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+</div>
+<p-messages [(value)]="msgs" [style]="{'width': '25%', 'margin-left' : '75%'}"></p-messages>
 <div class="loanType">
      <p-card>
         <p-header>
@@ -7,14 +11,15 @@
         <div class="container">
             <form [formGroup]="loanTypeForm">
                 <span class="ui-float-label">
-                    <input id="float-input" type="text"  pInputText formControlName="label" class="formInput">
+                    <input id="float-input" type="text" size="30" pInputText formControlName="label" class="formInput">
                     <label for="float-input">Loan Type</label>
-                     <!-- <p-message *ngIf="loanTypeForm.get('label').invalid" severity="error" text="Field is required"></p-message> -->
+                     <p-message *ngIf="loanTypeForm.get('label').invalid&&loanTypeForm.get('label').dirty" severity="error" text="Field is required"></p-message>
                 </span>
 
                 <span class="ui-float-label">
                     <input id="float-input" type="text" size="30" pInputText formControlName="rate" class="formInput">
                     <label for="float-input">Loan Rate</label>
+                    <p-message *ngIf="loanTypeForm.get('rate').invalid&&loanTypeForm.get('rate').dirty" severity="error" text="Field is required"></p-message>
                 </span>
             </form>
             <div class="btn">
@@ -23,7 +28,7 @@
             </div>
         </div>
         <div class="table">
-            <p-table [value]="loanTypes" dataKey="title" editMode="row">
+            <p-table [value]="loanTypes" dataKey="title" editMode="row" >
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Loan Type</th>
