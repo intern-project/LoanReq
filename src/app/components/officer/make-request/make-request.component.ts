@@ -90,7 +90,7 @@ export class MakeRequestComponent implements OnInit {
 
   ReqForm() {
     this.reqMakeForm = this.fb.group({
-      rid: [''],
+      rid: [],
       name: ['', Validators.required],
       address: ['', Validators.required],
       age: ['', Validators.required],
@@ -108,9 +108,9 @@ export class MakeRequestComponent implements OnInit {
   }
 
   onSubmit() {
+    this.reqMakeForm.get('rid').setValue(10);
     console.log(this.reqMakeForm.value);
     const data = this.reqMakeForm.value;
-
     this.Requestservice.addLoan(data).subscribe(
       val => {
         console.log('Successfully Added.');
@@ -121,8 +121,9 @@ export class MakeRequestComponent implements OnInit {
         this.showError();
        },
     );
-
     this.fillform = false;
+    this.ReqForm();
+    this.uploadfileform = true;
   }
 
 
