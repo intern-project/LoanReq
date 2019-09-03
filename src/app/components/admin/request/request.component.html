@@ -26,8 +26,16 @@
           <h3>Occupation: {{ request.job }}</h3>
         </div>
         <div *ngIf="request.rid == reqid">
-          <h3>Support Documents: None</h3>
+          <h3>
+            Support Documents: <button type="button" (click)="viewDocs()" pButton  label = "View Document" icon="pi pi-info-circle" iconPos="right"></button>                
+          </h3>
+          <p-dialog header="Document" [(visible)]="display">
+            <img src={{request.doc}}>
+        </p-dialog>
         </div>
+        <!-- <div *ngIf="request.rid == reqid">
+          <h3>Support Documents: <a href={{request.doc}}> View Document</a></h3>
+        </div> -->
         <div *ngIf="request.rid == reqid">
           <h3>Loan Ammount: Rs.{{ request.ammount }}</h3>
         </div>
@@ -44,8 +52,9 @@
             pButton
             type="button"
             class="ui-button-success"
+            label= "Accept"
           >
-            <b>Accept</b>
+    
           </button>
           <button
             style="padding:3px; font-size: 15px"
@@ -53,8 +62,8 @@
             type="button"
             class="ui-button-danger"
             (click)="clickDecline(request)"
+            label= "Decline"
           >
-            <b>Decline</b>
           </button>
         </div>
 

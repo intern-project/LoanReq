@@ -21,7 +21,7 @@
                         <b>Document Uploder</b>
                     </p-header>
                     <div class="container">
-                        <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+                        <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)" url="../../../../assets/"></p-fileUpload>
                     </div>
                     <div class="btn">
                         <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
@@ -52,38 +52,38 @@
                         </div>
                         <div class="col-ms-3">
                             <span class="ui-float-label">
-                                <input id="float-input" type="text" size="20" pInputText formControlName="age">
+                                <input id="float-input" type="text" size="40" pInputText formControlName="age">
                                 <label for="a-input">Age</label>
                             </span>
                         </div>
                         </div>
 
                         <span class="ui-float-label">
-                            <input id="float-input" type="text" size="20" pInputText formControlName="job">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="job">
                             <label for="float-input">Profession</label>
                         </span>
 
                         <span class="ui-float-label">
-                            <input id="float-input" type="text" size="20" pInputText formControlName="contact">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="contact">
                             <label for="a-input">Contact No.</label>
                         </span>
 
                         <span class="ui-float-label">
-                            <input id="float-input" type="text" size="20" pInputText formControlName="nic">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="nic">
                             <label for="float-input">NIC No</label>
                         </span>
                         <span class="ui-float-label">
-                            <input id="float-input" type="text" size="20" pInputText formControlName="ammount">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="ammount">
                             <label for="float-input">Ammount</label>
                         </span>
 
                         <span class="ui-float-label">
-                            <input id="float-input" type="text" size="20" pInputText formControlName="duration">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="duration">
                             <label for="float-input">Duraton</label>
                         </span>
 
                         <span class="ui-float-label">
-                            <input id="float-input" type="text" size="20" pInputText formControlName="reason">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="reason">
                             <label for="a-input">Reason</label>
                         </span>
 
