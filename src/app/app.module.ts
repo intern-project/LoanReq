@@ -54,7 +54,7 @@ import { AllRequestComponent } from './components/officer/all-request/all-reques
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [MessageService], //{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

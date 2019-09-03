@@ -9,17 +9,18 @@ import { LoanTypeComponent } from 'src/app/components/admin/loan-type/loan-type.
 import { AuthGuard } from '../../services/login/auth.guard';
 import { CalculationComponent } from 'src/app/components/officer/calculation/calculation.component';
 import { AllRequestComponent } from 'src/app/components/officer/all-request/all-request.component';
+import { AuthAdminGuard } from '../../services/login/auth-admin.guard';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'admin/pending', component: PendingRequestsComponent },
-  { path: 'admin/reviewed', component: ReviewedRequestsComponent },
-  { path: 'admin/loan-type', component: LoanTypeComponent},
-  { path: 'admin/reviewed/request/:id', component: RequestComponent },
-  { path: 'officer/term-calculator', component: CalculationComponent},
-  { path: 'officer/make-requests', component: MakeRequestComponent }, //canActivate: [AuthGuard] Add the Guards
-  { path: 'officer/all-requests', component: AllRequestComponent},
+  { path: 'admin/pending', component: PendingRequestsComponent ,canActivate: [AuthAdminGuard] }, //
+  { path: 'admin/reviewed', component: ReviewedRequestsComponent ,canActivate: [AuthAdminGuard] },
+  { path: 'admin/loan-type', component: LoanTypeComponent ,canActivate: [AuthAdminGuard]},
+  { path: 'admin/reviewed/request/:id', component: RequestComponent,canActivate: [AuthAdminGuard] },
+  { path: 'officer/term-calculator', component: CalculationComponent, canActivate: [AuthGuard]},
+  { path: 'officer/make-requests', component: MakeRequestComponent, canActivate: [AuthGuard]},
+  { path: 'officer/all-requests', component: AllRequestComponent, canActivate: [AuthGuard]},
   { path: '**', component: LoginComponent }
 
 ];
