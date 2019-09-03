@@ -4,7 +4,9 @@ import { PrimeNgModule } from '../../../shared/modules/prime-ng/prime-ng.module'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Message} from 'primeng/components/common/api';
 import {CardModule} from 'primeng/card';
+import { LoginService } from 'src/app/shared/services/login/login.service';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
+
   constructor(
+    public loginService: LoginService,
     private router: Router,
   ) { }
 
@@ -35,8 +39,12 @@ export class LoginComponent implements OnInit {
     if (this.form.get('email').value === 'admin') {
       this.router.navigate(['/admin/pending']);
     }
-    if (this.form.get('email').value === 'officer') {
-      this.router.navigate(['/officer/make-requests']);
+
+    else{
+      this.loginService.onLogin(this.form.value.email,this.form.value.password);
+      console.log("login passed to the service");
+//     if (this.form.get('email').value === 'officer') {
+//       this.router.navigate(['/officer/make-requests']);
     }
 
 
