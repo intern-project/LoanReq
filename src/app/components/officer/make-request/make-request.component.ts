@@ -103,11 +103,8 @@ export class MakeRequestComponent implements OnInit {
 
   onSubmit() {
     this.reqMakeForm.get('rid').setValue(10);
-    this.reqMakeForm.get('doc').setValue('doc');
     console.log(this.reqMakeForm.value);
     const data = this.reqMakeForm.value;
-    this.loanList.push(data);
-    console.log(this.loanList);
     this.Requestservice.addLoan(data).subscribe(
       val => {
         console.log('Successfully Added.');

@@ -3,8 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Request } from '../../classes/request';
 import { fileUpload } from '../../classes/fileUpload';
 import { Router } from '@angular/router';
-import { Observable, observable } from 'rxjs';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +48,9 @@ export class RequestService {
                         },
         response => {console.log('Error', response);});
   }
+  
+  add({severity: string, summary: sum, detail: any}) {
+  }
 
 
 
@@ -65,6 +67,9 @@ export class RequestService {
 
   }
 
+  addLoan(data: Request): Observable<Request> {
+    return this.http.post<Request>(this.jsonURL, data);
+  }
 
   uploadfile(data: fileUpload): Observable<fileUpload> {
     const header = new HttpHeaders();
