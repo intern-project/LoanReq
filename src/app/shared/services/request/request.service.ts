@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class RequestService {
    jsonURL = 'https://localhost:5001/api/Request';
+   jsonURLupload = 'https://localhost:5001/api/values';
   requests: Request[];
 
   private responseData: any;
@@ -55,17 +56,17 @@ export class RequestService {
 
 
 
-  addLoan(data: Request): Observable<Request> {
-    const header = new HttpHeaders();
-    header.set('content-Type', 'application/json');
-    const options = { headers: header };
-    console.log('came to make-request service');
-    console.log(data);
-    this.loanData = {data};
-    console.log(this.loanData);
-    return this.http.post<Request>(this.jsonURL, data, options);
+  // addLoan(data: Request): Observable<Request> {
+  //   const header = new HttpHeaders();
+  //   header.set('content-Type', 'application/json');
+  //   const options = { headers: header };
+  //   console.log('came to make-request service');
+  //   console.log(data);
+  //   this.loanData = {data};
+  //   console.log(this.loanData);
+  //   return this.http.post<Request>(this.jsonURL, data, options);
 
-  }
+  // }
 
   addLoan(data: Request): Observable<Request> {
     return this.http.post<Request>(this.jsonURL, data);
@@ -78,8 +79,12 @@ export class RequestService {
     console.log('came to make-request service file uploader');
     console.log(data);
     this.uploaddata = {data};
-    console.log(this.uploaddata);
-    return this.http.post<fileUpload>(this.jsonURL, data, options);
+    console.log(this.uploaddata[0]);
+    
+    let form = new FormData();
+    form.append("file", this.uploaddata[0]);
+
+    return this.http.post<fileUpload>(this.jsonURLupload, form, options);
 
   } 
 

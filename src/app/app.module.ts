@@ -27,6 +27,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
 import { AllRequestComponent } from './components/officer/all-request/all-request.component';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { AllRequestComponent } from './components/officer/all-request/all-reques
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    DropdownModule,
   ],
   providers: [MessageService], //{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },
   bootstrap: [AppComponent]

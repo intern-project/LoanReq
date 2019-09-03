@@ -49,9 +49,11 @@
     height: 35px;
     border-radius: 20px
   }
-  input {
+  .msgstyle {
     
-  }
+  }  
+  
+
   label {
     margin-left: 10px
   }
