@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { RequestService } from 'src/app/shared/services/request/request.service';
-//import {MessageService } from 'src/app/shared/services/message.service';
 import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
 import { StepsModule } from 'primeng/steps';
@@ -147,22 +146,31 @@ export class MakeRequestComponent implements OnInit {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
       const uploadfile = this.uploadedFiles
-      
-      console.log(this.uploaditem);
+      // this.Requestservice.uploadFile(event.files[0]).subscribe(
+      //   val => {
+      //     console.log('Successfully Added.');
+      //     this.showSuccessform();
+      //   },
+      //   response => {
+      //     console.log('Error Occoured -->', response);
+      //     this.showError();
+      //   },
+      // ) ;
       this.loading = true;
-      this.Requestservice.uploadfile(this.uploadedFiles).subscribe(
-        val => {
-          console.log('Successfully Uploaded.');
-          this.showSuccessfile();
-          this.loading = false;
-          this.uploaditem = true;
-        },
-        response => {
-          console.log('Error Occoured -->', response);
-          this.showError();
-          this.loading = false;
-        },
-      );
+      this.uploaditem =true;
+      // this.Requestservice.uploadfile(this.uploadedFiles).subscribe(
+      //   val => {
+      //     console.log('Successfully Uploaded.');
+      //     this.showSuccessfile();
+      //     this.loading = false;
+      //     this.uploaditem = true;
+      //   },
+      //   response => {
+      //     console.log('Error Occoured -->', response);
+      //     this.showError();
+      //     this.loading = false;
+      //   },
+      // );
     }
   }
 

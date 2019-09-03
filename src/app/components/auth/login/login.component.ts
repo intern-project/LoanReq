@@ -40,11 +40,12 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/admin/pending']);
     }
 
-    else{
-      this.loginService.onLogin(this.form.value.email,this.form.value.password);
-      console.log("login passed to the service");
-//     if (this.form.get('email').value === 'officer') {
-//       this.router.navigate(['/officer/make-requests']);
+    // else{
+    //   this.loginService.onLogin(this.form.value.email,this.form.value.password);
+    //   console.log("login passed to the service");
+    // }
+    if (this.form.get('email').value === 'officer') {
+      this.router.navigate(['/officer/make-requests']);
     }
 
 

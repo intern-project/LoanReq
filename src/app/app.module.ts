@@ -56,7 +56,7 @@ import {DropdownModule} from 'primeng/dropdown';
     ReactiveFormsModule,
     DropdownModule,
   ],
-  providers: [MessageService], //{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },
+  providers: [{provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true },MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

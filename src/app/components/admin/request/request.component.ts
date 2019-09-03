@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { RequestService } from 'src/app/shared/services/request/request.service';
 import { SideBarComponent } from '../../common/side-bar/side-bar.component';
 import { MenuItem } from 'primeng/api';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class RequestComponent implements OnInit {
   @ViewChild(SideBarComponent, {static: true}) sidebar;
 
   requests: Request[];
-
+  display: boolean = false;
   reqid = 0;
   // breadcrumb items
   items: MenuItem[];
@@ -64,6 +66,10 @@ export class RequestComponent implements OnInit {
       // {label: 'Reviewed Requests'}
     ];
     this.home = {icon: 'pi pi-home'};
+  }
+
+  viewDocs() {
+    this.display = true;
   }
 
 }
