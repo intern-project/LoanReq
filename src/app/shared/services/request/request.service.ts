@@ -53,20 +53,6 @@ export class RequestService {
   }
 
 
-
-
-  addLoan(data: Request): Observable<Request> {
-    const header = new HttpHeaders();
-    header.set('content-Type', 'application/json');
-    const options = { headers: header };
-    console.log('came to make-request service');
-    console.log(data);
-    this.loanData = {data};
-    console.log(this.loanData);
-    return this.http.post<Request>(this.jsonURL, data, options);
-
-  }
-
   addLoan(data: Request): Observable<Request> {
     return this.http.post<Request>(this.jsonURL, data);
   }
