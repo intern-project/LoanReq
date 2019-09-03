@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class RequestService {
    jsonURL = 'https://localhost:5001/api/Request';
+   jsonURLupload = 'https://localhost:5001/api/values';
   requests: Request[];
 
   private responseData: any;
@@ -51,7 +52,6 @@ export class RequestService {
   
   add({severity: string, summary: sum, detail: any}) {
   }
-
 
   addLoan(data: Request): Observable<Request> {
     return this.http.post<Request>(this.jsonURL, data);
