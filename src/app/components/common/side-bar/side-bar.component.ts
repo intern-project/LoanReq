@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  MenuItem } from 'primeng/api';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import {SidebarModule} from 'primeng/sidebar';
+import { LoginService } from 'src/app/shared/services/login/login.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -17,7 +18,7 @@ export class SideBarComponent implements OnInit {
   officerRole = false ;
 
   constructor(
-    private router: Router,
+    private router: Router,private loginService: LoginService,
   ) {
     this.admin = [
       {label: 'Pending Request',
@@ -55,7 +56,7 @@ export class SideBarComponent implements OnInit {
 
   logout() {
     console.log('click');
-    this.router.navigate(['/login']);
+    this.loginService.logout();
   }
 
 }
