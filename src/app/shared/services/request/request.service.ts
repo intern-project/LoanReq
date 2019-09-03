@@ -57,16 +57,21 @@ export class RequestService {
     return this.http.post<Request>(this.jsonURL, data);
   }
 
-  uploadfile(data: fileUpload): Observable<fileUpload> {
-    const header = new HttpHeaders();
-    header.set('content-Type', 'application/json');
-    const options = { headers: header };
-    console.log('came to make-request service file uploader');
-    console.log(data);
-    this.uploaddata = {data};
-    console.log(this.uploaddata);
-    return this.http.post<fileUpload>(this.jsonURL, data, options);
+  // uploadfile(data: fileUpload): Observable<fileUpload> {
+  //   const header = new HttpHeaders();
+  //   header.set('content-Type', 'application/json');
+  //   const options = { headers: header };
+  //   console.log('came to make-request service file uploader');
+  //   console.log(data);
+  //   this.uploaddata = {data};
+  //   console.log(this.uploaddata);
+  //   return this.http.post<fileUpload>(this.jsonURL, data, options);
 
-  } 
+  // } 
+  uploadFile(data: File): Observable<Response > {
+    const fd = new FormData();
+    fd.append('image', data, data.name);
+    return this.http.post<Response >('http://localhost:4200/assets', fd);
+  }
 
 }
