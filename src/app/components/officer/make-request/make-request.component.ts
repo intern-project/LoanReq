@@ -152,7 +152,7 @@ export class MakeRequestComponent implements OnInit {
           const item = JSON.stringify(val);
           const docName = JSON.parse(item).dbPath;
           const docLocation = docName;
-          this.str =  docLocation;
+          this.str =  'https://localhost:5001/' + docLocation;
           console.log(this.str);
           this.setStr();
           this.reqMakeForm.get('doc').setValue(docLocation);
