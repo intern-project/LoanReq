@@ -13,6 +13,7 @@ export class LoginService {
   private authStateListner = new Subject<boolean>();
   private isAuthenticated = false;
   private token: string;
+  
 
   constructor(private http: HttpClient , private router: Router) { }
 
@@ -78,6 +79,8 @@ export class LoginService {
     this.clearAuthData();
     this.router.navigate(['/']);
   }
+
+
 
 private saveAuthData(token: string,role: string){
     localStorage.setItem('token',token);

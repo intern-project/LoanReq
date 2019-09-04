@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-
+  msgs: Message[] = [];
 
   constructor(
     public loginService: LoginService,
@@ -34,18 +34,25 @@ export class LoginComponent implements OnInit {
   onLogin(){
     console.log('login works');
     console.log(this.form.value.email);
-
-    console.log(this.form.get('email').value);
-    if (this.form.get('email').value === 'admin') {
-      this.router.navigate(['/admin/pending']);
+    this.loginService.onLogin(this.form.value.email,this.form.value.password);
+    if (!this.loginService.getToken()){
+      this.msgs = [];
+      this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Invalid User Name or Password' });
+      this.form.controls['password'].reset();
     }
+    // this.loginService.onLogin()
 
-    else{
-      this.loginService.onLogin(this.form.value.email,this.form.value.password);
-      console.log("login passed to the service");
+    // console.log(this.form.get('email').value);
+    // if (this.form.get('email').value === 'admin') {
+    //   this.router.navigate(['/admin/pending']);
+    // }
+
+    // else{
+    //   this.loginService.onLogin(this.form.value.email,this.form.value.password);
+    //   console.log("login passed to the service");
 //     if (this.form.get('email').value === 'officer') {
 //       this.router.navigate(['/officer/make-requests']);
-    }
+
 
 
   }
