@@ -6,6 +6,7 @@ import {Message} from 'primeng/components/common/api';
 import {CardModule} from 'primeng/card';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { Router } from '@angular/router';
+import { resolve, reject } from 'q';
 
 
 
@@ -35,26 +36,22 @@ export class LoginComponent implements OnInit {
     console.log('login works');
     console.log(this.form.value.email);
     this.loginService.onLogin(this.form.value.email,this.form.value.password);
+    // if (!this.loginService.getToken()){
+    //   this.msgs = [];
+    //   this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Invalid User Name or Password' });
+    //   this.form.controls['password'].reset();
+    // }
+    setTimeout(() => {
+      this.showError();
+    }, 1000);
+  }
+
+  private showError() {
     if (!this.loginService.getToken()){
       this.msgs = [];
       this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Invalid User Name or Password' });
       this.form.controls['password'].reset();
     }
-    // this.loginService.onLogin()
-
-    // console.log(this.form.get('email').value);
-    // if (this.form.get('email').value === 'admin') {
-    //   this.router.navigate(['/admin/pending']);
-    // }
-
-    // else{
-    //   this.loginService.onLogin(this.form.value.email,this.form.value.password);
-    //   console.log("login passed to the service");
-//     if (this.form.get('email').value === 'officer') {
-//       this.router.navigate(['/officer/make-requests']);
-
-
-
   }
 
 
