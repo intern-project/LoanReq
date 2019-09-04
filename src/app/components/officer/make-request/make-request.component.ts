@@ -9,7 +9,7 @@ import { MenuItem } from 'primeng/api';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { SideBarComponent } from '../../common/side-bar/side-bar.component';
-
+import {SelectItem} from 'primeng/api';
 
 
 
@@ -24,9 +24,11 @@ export class MakeRequestComponent implements OnInit {
 
   public loanList: any[] = [];
   items: MenuItem[];
+  duration: SelectItem[];
+  duration1: string
 
   addLoan: boolean = false;
-  fillform: boolean = false;
+  fillform: boolean = true;
   uploadfileform: boolean = true;
   uploaditem: boolean = false;
   showtermvalValtable: boolean = false;
@@ -52,7 +54,9 @@ export class MakeRequestComponent implements OnInit {
     private Requestservice: RequestService,
     private http: HttpClient,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+
+   
   ) {
     this.getJSON().subscribe(data => {
       console.log(data.request);
@@ -70,6 +74,7 @@ export class MakeRequestComponent implements OnInit {
     this.sidebar.officerRole = true;
     this.initBreadCrumb();
     this.ReqForm();
+    this.selectgroup();
   }
 
 
@@ -84,7 +89,6 @@ export class MakeRequestComponent implements OnInit {
 
   ReqForm() {
     this.reqMakeForm = this.fb.group({
-      rid: [],
       name: ['', Validators.required],
       address: ['', Validators.required],
       age: ['', Validators.required],
@@ -92,13 +96,22 @@ export class MakeRequestComponent implements OnInit {
       contact: ['', Validators.required],
       nic: ['', Validators.required],
       ammount: ['', Validators.required],
-      duration: ['', Validators.required],
+      duration: ['',Validators.required],
       reason: ['', Validators.required],
       doc: [''],
       pending: [1, Validators.required],
       accepted: [0, Validators.required],
       declined: [0, Validators.required]
     });
+  }
+
+  selectgroup(){
+    this.duration = [
+      {label: '1 month', value: '1 month'},
+      {label: '3 months', value: '2 months'},
+      {label: '9 months', value: '9 months'},
+      
+  ];
   }
 
   onSubmit() {
