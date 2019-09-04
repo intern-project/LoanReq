@@ -54,6 +54,7 @@ export class RequestComponent implements OnInit {
     this.sidebar.adminRole = true;
     this.initBreadCrumb();
     this.reqid = parseInt(localStorage.getItem('RID'));
+
     this.requestService.getJSON();
     const req = localStorage.getItem('req');
     this.requests = JSON.parse(req);
@@ -69,6 +70,9 @@ export class RequestComponent implements OnInit {
   }
 
   viewDocs() {
+    const doc = localStorage.getItem('path');
+    console.log(doc);
+    this.requestService.getFile(doc);
     this.display = true;
   }
 

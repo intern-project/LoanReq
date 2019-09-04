@@ -73,5 +73,8 @@ export class RequestService {
     fd.append('image', data, data.name);
     return this.http.post<any>('https://localhost:5001/api/request/upload', fd);
   }
+  getFile(doc) {
+    this.http.get(doc);
+  }
 
 }

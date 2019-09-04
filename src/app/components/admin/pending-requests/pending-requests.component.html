@@ -16,7 +16,7 @@
                 <td *ngIf="req.pending == 1">{{req.nic}}</td>
                 <td *ngIf="req.pending == 1">{{req.name}}</td>
                 <td *ngIf="req.pending == 1">
-                    <p-button label="Review" (onClick)="handleClick(req.rid)"></p-button>
+                    <p-button label="Review" (onClick)="handleClick(req.rid, req.doc)"></p-button>
                 </td>
             </tr>
         </ng-template>

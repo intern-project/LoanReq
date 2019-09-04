@@ -28,7 +28,7 @@ export class MakeRequestComponent implements OnInit {
   duration1: string
 
   addLoan: boolean = false;
-  fillform: boolean = true;
+  fillform: boolean = false;
   uploadfileform: boolean = true;
   uploaditem: boolean = false;
   showtermvalValtable: boolean = false;
@@ -150,14 +150,16 @@ export class MakeRequestComponent implements OnInit {
       this.Requestservice.uploadFile(event.files[0]).subscribe(
         val => {
           const item = JSON.stringify(val);
-          const docLocation = JSON.parse(item).dbPath;
-          this.str =  JSON.parse(item).dbPath;
-          this.doSomeThing();
+          const docName = JSON.parse(item).dbPath;
+          const docLocation = docName;
+          this.str =  docLocation;
+          console.log(this.str);
+          this.setStr();
           this.reqMakeForm.get('doc').setValue(docLocation);
           // console.log(this.reqMakeForm.value);
 
           // console.log('Successfully Added.');
-          this.showSuccessform();
+          this.showSuccessfile();
         },
         response => {
           console.log('Error Occoured -->', response);
@@ -168,7 +170,7 @@ export class MakeRequestComponent implements OnInit {
       this.uploaditem =true;
     }
   }
-  doSomeThing() {
+  setStr() {
     this.reqMakeForm.get('doc').setValue(this.str);
     console.log(this.reqMakeForm.value);
   }
