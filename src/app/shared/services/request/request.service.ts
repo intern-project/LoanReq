@@ -71,7 +71,7 @@ export class RequestService {
   uploadFile(data: File): Observable<Response > {
     const fd = new FormData();
     fd.append('image', data, data.name);
-    return this.http.post<Response >('http://localhost:4200/assets', fd);
+    return this.http.post<any>('https://localhost:5001/api/request/upload', fd);
   }
 
 }
