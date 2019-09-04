@@ -28,9 +28,10 @@ export class PendingRequestsComponent implements OnInit {
     ) {}
 
 
-  handleClick(id) {
+  handleClick(id, doc) {
     this.router.navigate(['/admin/reviewed/request', id]);
     localStorage.setItem('RID', id);
+    localStorage.setItem('path', doc);
   }
 
   ngOnInit() {
