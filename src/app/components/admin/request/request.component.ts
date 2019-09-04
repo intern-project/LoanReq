@@ -70,9 +70,9 @@ export class RequestComponent implements OnInit {
   }
 
   viewDocs() {
-    const doc = localStorage.getItem('path');
-    console.log(doc);
-    this.requestService.getFile(doc);
+    // const doc = localStorage.getItem('path');
+    // console.log(doc);
+    // this.requestService.getFile(doc);
     this.display = true;
   }
 
