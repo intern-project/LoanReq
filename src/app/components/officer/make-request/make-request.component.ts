@@ -9,7 +9,7 @@ import { MenuItem } from 'primeng/api';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { SideBarComponent } from '../../common/side-bar/side-bar.component';
-import {SelectItem} from 'primeng/api';
+
 
 
 
@@ -24,8 +24,6 @@ export class MakeRequestComponent implements OnInit {
 
   public loanList: any[] = [];
   items: MenuItem[];
-  duration: SelectItem[];
-  duration1: string
 
   addLoan: boolean = false;
   fillform: boolean = false;
@@ -54,9 +52,7 @@ export class MakeRequestComponent implements OnInit {
     private Requestservice: RequestService,
     private http: HttpClient,
     private router: Router,
-    private messageService: MessageService,
-
-   
+    private messageService: MessageService
   ) {
     this.getJSON().subscribe(data => {
       console.log(data.request);
@@ -74,7 +70,6 @@ export class MakeRequestComponent implements OnInit {
     this.sidebar.officerRole = true;
     this.initBreadCrumb();
     this.ReqForm();
-    this.selectgroup();
   }
 
 
@@ -89,6 +84,7 @@ export class MakeRequestComponent implements OnInit {
 
   ReqForm() {
     this.reqMakeForm = this.fb.group({
+      rid: [],
       name: ['', Validators.required],
       address: ['', Validators.required],
       age: ['', Validators.required],
@@ -96,22 +92,13 @@ export class MakeRequestComponent implements OnInit {
       contact: ['', Validators.required],
       nic: ['', Validators.required],
       ammount: ['', Validators.required],
-      duration: ['',Validators.required],
+      duration: ['', Validators.required],
       reason: ['', Validators.required],
       doc: [''],
       pending: [1, Validators.required],
       accepted: [0, Validators.required],
       declined: [0, Validators.required]
     });
-  }
-
-  selectgroup(){
-    this.duration = [
-      {label: '1 month', value: '1 month'},
-      {label: '3 months', value: '2 months'},
-      {label: '9 months', value: '9 months'},
-      
-  ];
   }
 
   onSubmit() {
@@ -150,16 +137,14 @@ export class MakeRequestComponent implements OnInit {
       this.Requestservice.uploadFile(event.files[0]).subscribe(
         val => {
           const item = JSON.stringify(val);
-          const docName = JSON.parse(item).dbPath;
-          const docLocation = docName;
-          this.str =  'https://localhost:5001/' + docLocation;
-          console.log(this.str);
-          this.setStr();
+          const docLocation = JSON.parse(item).dbPath;
+          this.str =  JSON.parse(item).dbPath;
+          this.doSomeThing();
           this.reqMakeForm.get('doc').setValue(docLocation);
           // console.log(this.reqMakeForm.value);
 
           // console.log('Successfully Added.');
-          this.showSuccessfile();
+          this.showSuccessform();
         },
         response => {
           console.log('Error Occoured -->', response);
@@ -170,7 +155,7 @@ export class MakeRequestComponent implements OnInit {
       this.uploaditem =true;
     }
   }
-  setStr() {
+  doSomeThing() {
     this.reqMakeForm.get('doc').setValue(this.str);
     console.log(this.reqMakeForm.value);
   }
