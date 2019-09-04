@@ -32,6 +32,7 @@ export class MakeRequestComponent implements OnInit {
   showtermvalValtable: boolean = false;
   public showLoader: boolean = false;
   public loading = false;
+  str: string;
 
 
   reqMakeForm: FormGroup;
@@ -101,7 +102,7 @@ export class MakeRequestComponent implements OnInit {
   }
 
   onSubmit() {
-    this.reqMakeForm.get('rid').setValue(10);
+    this.reqMakeForm.get('rid').setValue(0);
     console.log(this.reqMakeForm.value);
     const data = this.reqMakeForm.value;
     this.Requestservice.addLoan(data).subscribe(
@@ -128,37 +129,35 @@ export class MakeRequestComponent implements OnInit {
     this.uploadfileform = true;
   }
 
-  //file uploader
+  // file uploader
   onUpload(event) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
-      const uploadfile = this.uploadedFiles
-      // this.Requestservice.uploadFile(event.files[0]).subscribe(
-      //   val => {
-      //     console.log('Successfully Added.');
-      //     this.showSuccessform();
-      //   },
-      //   response => {
-      //     console.log('Error Occoured -->', response);
-      //     this.showError();
-      //   },
-      // ) ;
+      const uploadfile = this.uploadedFiles;
+      this.Requestservice.uploadFile(event.files[0]).subscribe(
+        val => {
+          const item = JSON.stringify(val);
+          const docLocation = JSON.parse(item).dbPath;
+          this.str =  JSON.parse(item).dbPath;
+          this.doSomeThing();
+          this.reqMakeForm.get('doc').setValue(docLocation);
+          // console.log(this.reqMakeForm.value);
+
+          // console.log('Successfully Added.');
+          this.showSuccessform();
+        },
+        response => {
+          console.log('Error Occoured -->', response);
+          this.showError();
+        },
+      ) ;
       this.loading = true;
       this.uploaditem =true;
-      // this.Requestservice.uploadfile(this.uploadedFiles).subscribe(
-      //   val => {
-      //     console.log('Successfully Uploaded.');
-      //     this.showSuccessfile();
-      //     this.loading = false;
-      //     this.uploaditem = true;
-      //   },
-      //   response => {
-      //     console.log('Error Occoured -->', response);
-      //     this.showError();
-      //     this.loading = false;
-      //   },
-      // );
     }
+  }
+  doSomeThing() {
+    this.reqMakeForm.get('doc').setValue(this.str);
+    console.log(this.reqMakeForm.value);
   }
 
   formfill() {
