@@ -1,63 +1,67 @@
 <app-side-bar></app-side-bar>
 <div class="breadCrumb">
-    <p-breadcrumb [model]="breadCrumbItems" [home]="home"></p-breadcrumb>
-</div>
+        <p-breadcrumb [model]="breadCrumbItems" [home]="home"></p-breadcrumb>
+</div>    
 <div class="formPage">
-    <p-messages [(value)]="msgs" [style]="{'width': '25%', 'margin-left': '75%'}"></p-messages>
+<p-messages [(value)]="msgs" [style] = "{'width': '25%', 'margin-left': '75%'}"></p-messages>
+<div *ngIf="showLoader" class="loader animation-start" style="position: absolute;margin: 200px auto;z-index: 5000;">
+    <span class="circle delay-1 size-2"></span>
+    <span class="circle delay-2 size-4"></span>
+    <span class="circle delay-3 size-6"></span>
+    <span class="circle delay-4 size-7"></span>
+    <span class="circle delay-5 size-7"></span>
+    <span class="circle delay-6 size-6"></span>
+    <span class="circle delay-7 size-4"></span>
+    <span class="circle delay-8 size-2"></span>
+  </div>
     <div class="loanType">
-        <div *ngIf=uploadfileform>
-            <p-card>
-                <p-header>
-                    <b>Document Uploder</b>
-                </p-header>
-                <div class="container">
-                    <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
-                </div>
-                <div class="btn">
-                    <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
-                        [disabled]="uploaditem === false"></button>
-                    <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
-                        (click)="onCancel()"></button>
-                </div>
-            </p-card>
-        </div>
-        <div *ngIf=fillform>
+            <div *ngIf = uploadfileform>
+                <p-card>
+                    <p-header>
+                        <b>Document Uploder</b>
+                    </p-header>
+                    <div class="container">
+                        <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)" url="../../../../assets/"></p-fileUpload>
+                    </div>
+                    <div class="btn">
+                        <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
+                            [disabled]="uploaditem === false"></button>
+                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
+                            (click)="onCancel()"></button>
+                    </div>
+                </p-card>
+            </div>
+            <div *ngIf = fillform>
             <p-card>
                 <p-header>
                     <b>Loan Request form</b>
                 </p-header>
                 <div class="container">
                     <form [formGroup]="reqMakeForm">
-                        <div class="ui-g">
-                            <div div class="ui-g-12 ui-md-6">
-                                <span class="ui-float-label">
-                                    <input id="float-input" type="text" size="60" pInputText formControlName="name">
-                                    <label for="a-input">Full Name</label>
-                                </span>
-                            </div>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="name">
+                            <label for="a-input">Full Name</label>
+                        </span>
+                        <div class="row">
+                            <div class="col-ms-3">
+                            <span class="ui-float-label">
+                                <input id="float-input" type="text" size="40" pInputText formControlName="address">
+                                <label for="float-input">Address</label>
+                            </span>
                         </div>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6">
-                                <span class="ui-float-label">
-                                    <input id="float-input" type="text" size="60" pInputText formControlName="address">
-                                    <label for="float-input">Address</label>
-                                </span>
-                            </div>
+                        <div class="col-ms-3">
+                            <span class="ui-float-label">
+                                <input id="float-input" type="text" size="40" pInputText formControlName="age">
+                                <label for="a-input">Age</label>
+                            </span>
                         </div>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6">
-                                <span class="ui-float-label">
-                                    <input id="float-input" type="text" size="20" pInputText formControlName="age">
-                                    <label for="a-input">Age</label>
-                                </span>
-                            </div>
-                            <div class="ui-g-12 ui-md-6">
-                                <span class="ui-float-label">
-                                    <input id="float-input" type="text" size="20" pInputText formControlName="job">
-                                    <label for="float-input">Profession</label>
-                                </span>
-                            </div>
                         </div>
+
+                        <span class="ui-float-label">
+                            <input id="float-input" type="text" size="40" pInputText formControlName="job">
+                            <label for="float-input">Profession</label>
+                        </span>
 
                         <span class="ui-float-label">
                             <input id="float-input" type="text" size="40" pInputText formControlName="contact">
@@ -68,22 +72,21 @@
                             <input id="float-input" type="text" size="40" pInputText formControlName="nic">
                             <label for="float-input">NIC No</label>
                         </span>
-
                         <span class="ui-float-label">
                             <input id="float-input" type="text" size="40" pInputText formControlName="ammount">
                             <label for="float-input">Ammount</label>
                         </span>
 
                         <span class="ui-float-label">
-                            <p-dropdown id="float-input" size="20" [options]="duration" pInputSelect
-                                formControlName="duration"></p-dropdown>
-
+                            <input id="float-input" type="text" size="40" pInputText formControlName="duration">
+                            <label for="float-input">Duraton</label>
                         </span>
 
                         <span class="ui-float-label">
                             <input id="float-input" type="text" size="40" pInputText formControlName="reason">
                             <label for="a-input">Reason</label>
                         </span>
+
                     </form>
                     <div class="btn">
                         <button pButton type="button" label="submit" class="ui-button-rounded" (click)="onSubmit()"
@@ -92,11 +95,9 @@
                             (click)="onCancel()"></button>
                     </div>
                 </div>
+
                 <p-footer></p-footer>
             </p-card>
-            <h3>Basic</h3>
-            <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"
-                (onUpload)="onBasicUpload($event)"></p-fileUpload>
         </div>
     </div>
 </div>
