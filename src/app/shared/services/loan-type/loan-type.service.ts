@@ -26,8 +26,8 @@ export class LoanTypeService {
       const options = { headers: header};
       const id = loanType.id;
       const url = `${this.loanTypeUrl}/${id}`;
-      this.http.put<LoanType>(url, loanType, options).
-        subscribe(val => {console.log('Successfully Updated.'); } ,
+      this.http.put<LoanType>(url, loanType, options)
+        .subscribe(val => {console.log('Successfully Updated.'); } ,
                   response => { console.log('Error Occoured -->', response); },
         );
   }

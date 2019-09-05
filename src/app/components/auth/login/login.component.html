@@ -6,15 +6,16 @@
 
     <p-card header="Sign In" [style]="{width: '500px'}">
     <hr>
-
+  
     <form [formGroup]="form" (submit)="onLogin()" >
+  <div class="form">
     <h3 class="first">User Name</h3>
     <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-2">
           <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
               <input type="text" formControlName="email" placeholder="Email">
-              <p severity="error" text="Email is required" *ngIf="!form.get('email').valid"></p>
+              <!-- <p-message *ngIf="form.get('email').invalid&&form.get('email').dirty" severity="error" text="Field is required" ></p-message>     -->
           </div>
       </div>
     </div>
@@ -25,10 +26,11 @@
           <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
               <input type="password" formControlName="password" placeholder="Password">
-              <p severity="error" text="Password is required" *ngIf="!form.get('password').valid"></p>
+            <!-- <p-message *ngIf="form.get( 'password').invalid&&form.get('password').dirty" severity="error" text="Field is required" ></p-message>                             -->
           </div>
       </div>
     </div>
+  </div>
 
     <br>
       <div align="right">

@@ -28,6 +28,7 @@ import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
 import { AllRequestComponent } from './components/officer/all-request/all-request.component';
 import {DropdownModule} from 'primeng/dropdown';
+import { NotFoundComponent } from './components/common/not-found/not-found.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {DropdownModule} from 'primeng/dropdown';
     LoanTypeComponent,
     SideBarComponent,
     AllRequestComponent,
-    SideBarComponent
+    SideBarComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

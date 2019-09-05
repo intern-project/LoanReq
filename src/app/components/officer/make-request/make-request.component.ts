@@ -26,8 +26,8 @@ export class MakeRequestComponent implements OnInit {
   items: MenuItem[];
 
   addLoan: boolean = false;
-  fillform: boolean = false;
-  uploadfileform: boolean = true;
+  fillform: boolean = true;
+  uploadfileform: boolean = false;
   uploaditem: boolean = false;
   showtermvalValtable: boolean = false;
   public showLoader: boolean = false;
@@ -115,18 +115,19 @@ export class MakeRequestComponent implements OnInit {
         this.showError();
       },
     );
-    this.fillform = false;
     this.ReqForm();
-    this.uploadfileform = true;
+    this.uploadfileform = false;
+    this.fillform = true;
+
   }
 
 
   onCancel() {
     this.uploadfileform = false;
-    this.fillform = false;
+    this.fillform = true;
+    this.ReqForm();
     this.uploaditem = false;
     this.loanList = [];
-    this.uploadfileform = true;
   }
 
   // file uploader
@@ -139,12 +140,12 @@ export class MakeRequestComponent implements OnInit {
           const item = JSON.stringify(val);
           const docLocation = JSON.parse(item).dbPath;
           this.str =  'https://localhost:5001/' + JSON.parse(item).dbPath;
-          this.doSomeThing();
+          this.setStr();
           this.reqMakeForm.get('doc').setValue(this.str);
           // console.log(this.reqMakeForm.value);
 
           // console.log('Successfully Added.');
-          this.showSuccessform();
+          this.showSuccessfile();
         },
         response => {
           console.log('Error Occoured -->', response);
@@ -155,14 +156,14 @@ export class MakeRequestComponent implements OnInit {
       this.uploaditem =true;
     }
   }
-  doSomeThing() {
+  private setStr() {
     this.reqMakeForm.get('doc').setValue(this.str);
     console.log(this.reqMakeForm.value);
   }
 
   formfill() {
-    this.uploadfileform = false;
-    this.fillform = true;
+    this.uploadfileform = true;
+    this.fillform = false;
     this.uploaditem = false;
   }
 

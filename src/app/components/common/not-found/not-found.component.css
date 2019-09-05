@@ -1,0 +1,19 @@
+.imsize {
+    width: 50%;
+    margin-left: 30%;
+    padding-bottom: 200px; 
+}
+
+.row {
+    background-color: white;
+}
+
+.ft {
+    color: rgb(214, 29, 29);
+    margin-left : 180px; 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.btn {
+    margin-left: 160px;
+}

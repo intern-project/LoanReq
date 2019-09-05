@@ -21,10 +21,10 @@
                         <b>Document Uploder</b>
                     </p-header>
                     <div class="container">
-                        <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)" url="../../../../assets/"></p-fileUpload>
+                        <p-fileUpload name="myfile[]" customUpload="true" (uploadHandler)="onUpload($event)" ></p-fileUpload>
                     </div>
                     <div class="btn">
-                        <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
+                        <button pButton type="button" label="Submit" class="ui-button-rounded" (click)="onSubmit()"
                             [disabled]="uploaditem === false"></button>
                         <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
                             (click)="onCancel()"></button>
@@ -89,9 +89,9 @@
 
                     </form>
                     <div class="btn">
-                        <button pButton type="button" label="submit" class="ui-button-rounded" (click)="onSubmit()"
+                        <button pButton type="button" label="Next" class="ui-button-rounded" (click)="formfill()"
                             [disabled]="reqMakeForm.invalid"></button>
-                        <button pButton type="button" label=" cancel " class="ui-button-rounded ui-button-danger"
+                        <button pButton type="button" label=" Cancel " class="ui-button-rounded ui-button-danger"
                             (click)="onCancel()"></button>
                     </div>
                 </div>

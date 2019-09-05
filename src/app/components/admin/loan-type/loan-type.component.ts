@@ -96,9 +96,11 @@ export class LoanTypeComponent implements OnInit {
         delete this.cloned[lType.rate];
         console.log(lType.rate);
         this.onUpdate(lType);
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Rate is updated'});
+        this.msgs = [];
+        this.msgs.push({severity: 'success', summary: 'Success Message : ', detail: 'Updating Successfully!'});
     } else {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Rate is required'});
+        this.msgs = [];
+        this.msgs.push({severity: 'error', summary: 'Error Message : ', detail: 'Updating Failed!'});
     }
   }
   // edit rate value

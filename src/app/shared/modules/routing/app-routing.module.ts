@@ -10,6 +10,7 @@ import { AuthGuard } from '../../services/login/auth.guard';
 import { CalculationComponent } from 'src/app/components/officer/calculation/calculation.component';
 import { AllRequestComponent } from 'src/app/components/officer/all-request/all-request.component';
 import { AuthAdminGuard } from '../../services/login/auth-admin.guard';
+import { NotFoundComponent } from 'src/app/components/common/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'officer/term-calculator', component: CalculationComponent, canActivate: [AuthGuard]},
   { path: 'officer/make-requests', component: MakeRequestComponent, canActivate: [AuthGuard]},
   { path: 'officer/all-requests', component: AllRequestComponent, canActivate: [AuthGuard]},
-  { path: '**', component: LoginComponent }
+  { path: '**', component: NotFoundComponent }
 
 ];
 

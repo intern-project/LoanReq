@@ -29,7 +29,7 @@
           <h3>
             Support Documents: <button type="button" (click)="viewDocs()" pButton  label = "View Document" icon="pi pi-info-circle" iconPos="right"></button>                
           </h3>
-          <p-dialog header="Document" [(visible)]="display">
+          <p-dialog header="Document" [(visible)]="display" >
             <img src={{request.doc}}>
         </p-dialog>
         </div>
@@ -46,25 +46,21 @@
           <h3>Reason: {{ request.reason }}</h3>
         </div>
         <div *ngIf="request.rid == reqid && request.pending == 1">
-          <button
-            (click)="clickAccept(request)"
-            style="padding:3px; margin: 10px; font-size: 15px"
-            pButton
-            type="button"
-            class="ui-button-success"
-            label= "Accept"
-          >
-    
+            <button
+              style="padding:3px; margin: 10px; font-size: 15px"
+              pButton
+              type="button"
+              class="ui-button-success"
+              label= "Accept" (click)="clickAccept(request)">
           </button>
-          <button
-            style="padding:3px; font-size: 15px"
-            pButton
-            type="button"
-            class="ui-button-danger"
-            (click)="clickDecline(request)"
-            label= "Decline"
-          >
-          </button>
+            <button
+              style="padding:3px; font-size: 15px"
+              pButton
+              type="button"
+              class="ui-button-danger"
+              label= "Decline" (click)="clickDecline(request)">
+            </button>
+          
         </div>
 
         <div *ngIf="request.rid == reqid && request.pending == 0">

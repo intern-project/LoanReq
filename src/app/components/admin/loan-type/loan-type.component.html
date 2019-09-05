@@ -13,12 +13,12 @@
                 <span class="ui-float-label">
                     <input id="float-input" type="text" size="30" pInputText formControlName="label" class="formInput">
                     <label for="float-input">Loan Type</label>
-                     <p-message *ngIf="loanTypeForm.get('label').invalid&&loanTypeForm.get('label').dirty" severity="error" text="Field is required"></p-message>
+                     <p-message *ngIf="loanTypeForm.get('label').invalid&&loanTypeForm.get('label').dirty" severity="error" text="Field is required" ></p-message>
                 </span>
 
                 <span class="ui-float-label">
                     <input id="float-input" type="text" size="30" pInputText formControlName="rate" class="formInput">
-                    <label for="float-input">Loan Rate</label>
+                    <label for="float-input">Loan Rate - <small>Eg:10</small></label>
                     <p-message *ngIf="loanTypeForm.get('rate').invalid&&loanTypeForm.get('rate').dirty" severity="error" text="Field is required"></p-message>
                 </span>
             </form>
