@@ -4,8 +4,8 @@ import { TermValue } from 'src/app/shared/classes/term-value';
 import { LoanType, ClonedLoanType } from 'src/app/shared/classes/loan-type';
 import { SideBarComponent } from '../../common/side-bar/side-bar.component';
 import { LoanTypeService } from 'src/app/shared/services/loan-type/loan-type.service';
-import {BreadcrumbModule} from 'primeng/breadcrumb';
-import {MenuItem} from 'primeng/api';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-calculation',
@@ -13,8 +13,8 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./calculation.component.css']
 })
 export class CalculationComponent implements OnInit {
-  
-  @ViewChild(SideBarComponent, {static: true}) sidebar;
+
+  @ViewChild(SideBarComponent, { static: true }) sidebar;
 
   // form creation
   calculationForm: FormGroup;
@@ -22,15 +22,15 @@ export class CalculationComponent implements OnInit {
   loanTypes: LoanType[];
   term: number;
   termValue = false;
-  // tabel creation
-  termValueTabel: TermValue[] = [];
+  // table creation
+  termValueTable: TermValue[] = [];
   tableLoading = false;
   cloned: { [s: string]: TermValue; } = {};
   display = false;
   // breadcrumb items
   items: MenuItem[];
   home: MenuItem;
-  // dropdowns
+  // dropdown
   types: ClonedLoanType[];
   years = [];
 
@@ -40,16 +40,16 @@ export class CalculationComponent implements OnInit {
     private ltService: LoanTypeService
   ) {
     this.years = [
-      {label: 'One Year', value: 1},
-      {label: 'Two Years' , value: 2},
-      {label: 'Three Years', value: 3},
-      {label: 'Four Years', value: 4},
-      {label: 'Five Years', value: 5},
-      {label: 'Six Years', value: 6},
-      {label: 'Seven Years', value: 7},
-      {label: 'Eight Years', value: 8},
-      {label: 'Nine Years', value: 9},
-      {label: 'Ten Years', value: 10},
+      { label: 'One Year', value: 1 },
+      { label: 'Two Years', value: 2 },
+      { label: 'Three Years', value: 3 },
+      { label: 'Four Years', value: 4 },
+      { label: 'Five Years', value: 5 },
+      { label: 'Six Years', value: 6 },
+      { label: 'Seven Years', value: 7 },
+      { label: 'Eight Years', value: 8 },
+      { label: 'Nine Years', value: 9 },
+      { label: 'Ten Years', value: 10 },
     ];
   }
 
@@ -62,16 +62,16 @@ export class CalculationComponent implements OnInit {
   // initiate bread crumb
   private initBreadCrumb() {
     this.items = [
-      {label: 'Officer'},
-      {label: 'Term Calculator', url: '/officer/term-calculator'}
+      { label: 'Officer' },
+      { label: 'Term Calculator', url: '/officer/term-calculator' }
     ];
-    this.home = {icon: 'pi pi-home'};
+    this.home = { icon: 'pi pi-home' };
   }
   // get loan types from db
   private getLoanTypes(): void {
     this.ltService.loanTypesGet().subscribe(loanTypes => {
       this.loanTypes = loanTypes;
-      this.types = this.loanTypes.map(item => ({...item, value: item.rate}));
+      this.types = this.loanTypes.map(item => ({ ...item, value: item.rate }));
     });
   }
   // initiate the form
@@ -82,13 +82,13 @@ export class CalculationComponent implements OnInit {
       type: ['', Validators.required]
     });
   }
-  // create tabel
+  // create table
   private termValueArray(months, term) {
-    for ( let i = 1; i <= months; i++) {
+    for (let i = 1; i <= months; i++) {
       const data = {} as TermValue;
       data.label = i;
       data.value = term;
-      this.termValueTabel.push(data);
+      this.termValueTable.push(data);
     }
   }
   // new term calculation with editing
@@ -105,12 +105,12 @@ export class CalculationComponent implements OnInit {
     const val = newTerm.toFixed(2);
     newTerm = Number(val);
 
-    for ( let i = item.label; i <= cal.months; i++) {
+    for (let i = item.label; i <= cal.months; i++) {
       const data = {} as TermValue;
       data.label = i + 1;
       data.value = newTerm;
-      const findItem = this.termValueTabel.findIndex((e) => e.label === data.label);
-      this.termValueTabel[findItem] = data;
+      const findItem = this.termValueTable.findIndex((e) => e.label === data.label);
+      this.termValueTable[findItem] = data;
     }
   }
   // calculate term
@@ -120,7 +120,7 @@ export class CalculationComponent implements OnInit {
       months: Number(this.calculationForm.get('duration').value * 12),
       type: Number(this.calculationForm.get('type').value)
     };
-    const interest = cal.type / 100 ;
+    const interest = cal.type / 100;
 
     this.term = ((cal.amount + (cal.amount * interest)) / cal.months);
     const val = this.term.toFixed(2);
@@ -137,27 +137,27 @@ export class CalculationComponent implements OnInit {
   }
   // tabel edit
   onRowEditInit(item: TermValue) {
-    this.cloned[item.value] = {...item};
+    this.cloned[item.value] = { ...item };
   }
 
   // tabel save
   onRowEditSave(item: TermValue) {
     if (item.value > 0) {
-        delete this.cloned[item.value];
-        this.newTermValueCalculation(item);
-        // this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
+      delete this.cloned[item.value];
+      this.newTermValueCalculation(item);
+      // this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
     } else {
-        // this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
+      // this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
     }
   }
-   // tabel edit cancel
-   onRowEditCancel(item: TermValue, index: number) {
+  // tabel edit cancel
+  onRowEditCancel(item: TermValue, index: number) {
     // this.loanType[index] = this.cloned[lType.rate];
     delete this.cloned[item.value];
   }
   // show table
   showDialog() {
     this.display = true;
-}
-  
+  }
+
 }
