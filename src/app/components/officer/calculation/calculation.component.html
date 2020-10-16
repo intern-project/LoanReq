@@ -1,69 +1,75 @@
 <app-side-bar></app-side-bar>
 <div class="breadCrumb">
-    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+  <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
 </div>
 
 <div class="calculation">
-    <p-card [style]="{'width' : '65%'}">
-        <h3>Term Calculator</h3>
-        <div class="calForm">
-        <form class="formCal"[formGroup]="calculationForm">
-            
-                <span class="ui-float-label">
-                    <input  type="text" pInputText formControlName="amount" class="formInput" style="width: 75%">
-                    <label for="float-input">Amount</label>
-                </span>
-                <span class="ui-float-label">
-                    <p-dropdown [options]="years" [style] = "{'width' : '75%'}" formControlName="duration" placeholder="Select Duration"></p-dropdown>
-                </span>
-                <span class="ui-float-label">
-                    <p-dropdown [options]="types" [style] = "{'width' : '75%'}" formControlName="type" (onChange)="calculateTerm()" placeholder="Select Loan Type"></p-dropdown>
-                </span>
-            </form>
-        </div>
-            <div *ngIf="termValue" >
-                <br>
-                <div class="term" (click)="termClick()"><b>Term Value :</b>  {{term | currency:'LKR ' : 'symbol'}} 
-                <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" ></button>                
-                </div>
-                <br>
-            </div>
-        
-            <p-dialog header="Term Calculator" [(visible)]="display" width="1000">
-                <div *ngIf="tableLoading" class="table">
-                    <p-table [value]="termValueTabel" dataKey="title" editMode="row" [responsive]='true' [rows]='6' [paginator]='true' [rowsPerPageOptions]='[12, 24, 36]'>
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th>Term No.</th>
-                                <th>Term Value</th>
-                                <th style="width:8em"></th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
-                            <tr [pEditableRow]="rowData" >
-                                <td style="text-align: center">
-                                    {{rowData.label}} Term
-                                </td>
-                                <td style="text-align: center">
-                                    <p-cellEditor>
-                                        <ng-template pTemplate="input">
-                                            <input pInputText  [(ngModel)]="rowData.value"  required>
-                                        </ng-template>
-                                        <ng-template pTemplate="output">
-                                            {{rowData.value | currency:'LKR ' : 'symbol'}}
-                                        </ng-template>
-                                    </p-cellEditor>
-                                </td>
-                                <td style="text-align:center">
-                                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
-                                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
-                                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
-                                </td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-                </div>
-            </p-dialog>   
-            <br>        
-    </p-card>
+  <p-card [style]="{'width' : '65%'}">
+    <h3>Term Calculator</h3>
+    <div class="calForm">
+      <form class="formCal" [formGroup]="calculationForm">
+
+        <span class="ui-float-label">
+          <input type="text" pInputText formControlName="amount" class="formInput" style="width: 75%">
+          <label for="float-input">Amount</label>
+        </span>
+        <span class="ui-float-label">
+          <p-dropdown [options]="years" [style]="{'width' : '75%'}" formControlName="duration"
+            placeholder="Select Duration"></p-dropdown>
+        </span>
+        <span class="ui-float-label">
+          <p-dropdown [options]="types" [style]="{'width' : '75%'}" formControlName="type" (onChange)="calculateTerm()"
+            placeholder="Select Loan Type"></p-dropdown>
+        </span>
+      </form>
+    </div>
+    <div *ngIf="termValue">
+      <br>
+      <div class="term" (click)="termClick()"><b>Term Value :</b> {{term | currency:'LKR ' : 'symbol'}}
+        <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle"></button>
+      </div>
+      <br>
+    </div>
+
+    <p-dialog header="Term Calculator" [(visible)]="display" width="1000">
+      <div *ngIf="tableLoading" class="table">
+        <p-table [value]="termValueTabel" dataKey="title" editMode="row" [responsive]='true' [rows]='6'
+          [paginator]='true' [rowsPerPageOptions]='[12, 24, 36]'>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Term No.</th>
+              <th>Term Value</th>
+              <th style="width:8em"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="rowData">
+              <td style="text-align: center">
+                {{rowData.label}} Term
+              </td>
+              <td style="text-align: center">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input pInputText [(ngModel)]="rowData.value" required>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.value | currency:'LKR ' : 'symbol'}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td style="text-align:center">
+                <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+                  class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+                <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+                  class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                  class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </p-dialog>
+    <br>
+  </p-card>
 </div>

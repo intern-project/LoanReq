@@ -1,14 +1,14 @@
 <app-side-bar></app-side-bar>
 <div class="breadCrumb">
         <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
-</div>    
+</div>
 <div class="table">
     <p-table [value]="requests">
             <ng-template pTemplate="header">
                 <tr>
                     <th>NIC</th>
                     <th>Name</th>
-                    <th>Satatus</th>
+                    <th>Status</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-req>
@@ -20,7 +20,7 @@
                         <p *ngIf="req.accepted== 1" class="accepted"> <b>Accepted</b> </p>
                         <p *ngIf="req.declined == 1" class="declined"> <b>Declined</b> </p>
                     </td>
-                     
+
                 </tr>
             </ng-template>
     </p-table>
