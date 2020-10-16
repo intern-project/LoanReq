@@ -4,12 +4,12 @@
         <img src="https://image.flaticon.com/icons/svg/149/149071.svg"  >
     </div>
     <div *ngIf=adminRole>
-        <h1 style="font-weight:normal">Admin Dashbord</h1>
+        <h1 style="font-weight:normal">Admin Dashboard</h1>
     </div>
     <div *ngIf=officerRole>
-        <h1 style="font-weight:normal">Officer Dashbord</h1>
+        <h1 style="font-weight:normal">Officer Dashboard</h1>
     </div>
-    
+
     <div class="admin" *ngIf="adminRole">
         <p-panelMenu [model]="admin"></p-panelMenu>
         <button pButton type="button" label="logout" class="ui-button-rounded" (click)="logout()"></button>
