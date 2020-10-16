@@ -1,7 +1,7 @@
 <app-side-bar></app-side-bar>
 <div class="breadCrumb">
         <p-breadcrumb [model]="breadCrumbItems" [home]="home"></p-breadcrumb>
-</div>    
+</div>
 <div class="formPage">
 <p-messages [(value)]="msgs" [style] = "{'width': '25%', 'margin-left': '75%'}"></p-messages>
 <div *ngIf="showLoader" class="loader animation-start" style="position: absolute;margin: 200px auto;z-index: 5000;">
@@ -66,25 +66,6 @@
                         <span class="ui-float-label">
                             <input id="float-input" type="text" size="40" pInputText formControlName="contact">
                             <label for="a-input">Contact No.</label>
-                        </span>
-
-                        <span class="ui-float-label">
-                            <input id="float-input" type="text" size="40" pInputText formControlName="nic">
-                            <label for="float-input">NIC No</label>
-                        </span>
-                        <span class="ui-float-label">
-                            <input id="float-input" type="text" size="40" pInputText formControlName="ammount">
-                            <label for="float-input">Ammount</label>
-                        </span>
-
-                        <span class="ui-float-label">
-                            <input id="float-input" type="text" size="40" pInputText formControlName="duration">
-                            <label for="float-input">Duraton</label>
-                        </span>
-
-                        <span class="ui-float-label">
-                            <input id="float-input" type="text" size="40" pInputText formControlName="reason">
-                            <label for="a-input">Reason</label>
                         </span>
 
                     </form>
